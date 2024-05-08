@@ -19,6 +19,40 @@
 		719BEE722BE968530075B264 /* CocktailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE712BE968530075B264 /* CocktailView.swift */; };
 		719BEE742BE9685A0075B264 /* CocktailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE732BE9685A0075B264 /* CocktailViewModel.swift */; };
 		719BEE772BE969F00075B264 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 719BEE762BE969F00075B264 /* Kingfisher */; };
+		719BEE7D2BE97E700075B264 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE7C2BE97E700075B264 /* APIClient.swift */; };
+		719BEE802BE97E920075B264 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 719BEE7F2BE97E920075B264 /* Alamofire */; };
+		719BEE822BE97E9F0075B264 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE812BE97E9F0075B264 /* APIRequest.swift */; };
+		719BEE842BE97FD40075B264 /* AuthenticationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE832BE97FD40075B264 /* AuthenticationType.swift */; };
+		719BEE862BE97FEA0075B264 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE852BE97FEA0075B264 /* ContentType.swift */; };
+		719BEE882BE97FF90075B264 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE872BE97FF90075B264 /* Endpoint.swift */; };
+		719BEE8A2BE980040075B264 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE892BE980040075B264 /* NetworkConstants.swift */; };
+		719BEE8C2BE981FF0075B264 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE8B2BE981FF0075B264 /* Model.swift */; };
+		719BEE8E2BE9820B0075B264 /* Drinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE8D2BE9820B0075B264 /* Drinks.swift */; };
+		719BEE902BE982200075B264 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE8F2BE982200075B264 /* Drink.swift */; };
+		719BEE922BE984050075B264 /* CocktailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE912BE984050075B264 /* CocktailService.swift */; };
+		719BEE952BE9846B0075B264 /* SearchCocktailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE942BE9846B0075B264 /* SearchCocktailsRequest.swift */; };
+		719BEE982BE986890075B264 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE972BE986890075B264 /* APIError.swift */; };
+		719BEE9D2BE9874F0075B264 /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE9C2BE9874F0075B264 /* URL+.swift */; };
+		719BEE9F2BE987550075B264 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE9E2BE987550075B264 /* Encodable+.swift */; };
+		719BEEA22BE989760075B264 /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 719BEEA12BE989760075B264 /* CombineExt */; };
+		719BEEA52BE98D0C0075B264 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEA42BE98D0C0075B264 /* Color+.swift */; };
+		719BEEA82BE9925A0075B264 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEA72BE9925A0075B264 /* SearchBarView.swift */; };
+		719BEEAA2BE992DB0075B264 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEA92BE992DB0075B264 /* Assets.swift */; };
+		719BEEAD2BEA09430075B264 /* CocktailDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEAC2BEA09430075B264 /* CocktailDetailsView.swift */; };
+		719BEEAF2BEA094A0075B264 /* CocktailDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEAE2BEA094A0075B264 /* CocktailDetailsViewModel.swift */; };
+		719BEEB12BEA097A0075B264 /* CocktailDetailsContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEB02BEA097A0075B264 /* CocktailDetailsContext.swift */; };
+		719BEEB32BEA0A980075B264 /* Decodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEB22BEA0A980075B264 /* Decodable+.swift */; };
+		719BEEB52BEA0BBD0075B264 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEB42BEA0BBD0075B264 /* DateFormatter+.swift */; };
+		719BEEB72BEA0D440075B264 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEB62BEA0D440075B264 /* Date+.swift */; };
+		719BEEB92BEA0DE40075B264 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEB82BEA0DE40075B264 /* String+Localization.swift */; };
+		719BEEBC2BEA11EB0075B264 /* CocktailDetailsFetchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEBB2BEA11EB0075B264 /* CocktailDetailsFetchType.swift */; };
+		719BEEBE2BEA16690075B264 /* GetCocktailDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEBD2BEA16690075B264 /* GetCocktailDetailsRequest.swift */; };
+		719BEEC12BEA18770075B264 /* IconTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEC02BEA18770075B264 /* IconTitleView.swift */; };
+		719BEEC32BEA187B0075B264 /* IconTitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEC22BEA187B0075B264 /* IconTitleViewModel.swift */; };
+		719BEEC52BEA4E0E0075B264 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEC42BEA4E0E0075B264 /* String+.swift */; };
+		719BEEC72BEA5A940075B264 /* Dictionary+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEC62BEA5A940075B264 /* Dictionary+.swift */; };
+		719BEEC92BEAC7D30075B264 /* GetRandomCocktailDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEC82BEAC7D30075B264 /* GetRandomCocktailDetailsRequest.swift */; };
+		719BEECE2BEAD7E10075B264 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEECD2BEAD7E10075B264 /* FiltersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +87,38 @@
 		719BEE6D2BE967970075B264 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		719BEE712BE968530075B264 /* CocktailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailView.swift; sourceTree = "<group>"; };
 		719BEE732BE9685A0075B264 /* CocktailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailViewModel.swift; sourceTree = "<group>"; };
+		719BEE7C2BE97E700075B264 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		719BEE812BE97E9F0075B264 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		719BEE832BE97FD40075B264 /* AuthenticationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationType.swift; sourceTree = "<group>"; };
+		719BEE852BE97FEA0075B264 /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
+		719BEE872BE97FF90075B264 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		719BEE892BE980040075B264 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		719BEE8B2BE981FF0075B264 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		719BEE8D2BE9820B0075B264 /* Drinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drinks.swift; sourceTree = "<group>"; };
+		719BEE8F2BE982200075B264 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
+		719BEE912BE984050075B264 /* CocktailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailService.swift; sourceTree = "<group>"; };
+		719BEE942BE9846B0075B264 /* SearchCocktailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCocktailsRequest.swift; sourceTree = "<group>"; };
+		719BEE972BE986890075B264 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		719BEE9C2BE9874F0075B264 /* URL+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+.swift"; sourceTree = "<group>"; };
+		719BEE9E2BE987550075B264 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
+		719BEEA42BE98D0C0075B264 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		719BEEA72BE9925A0075B264 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		719BEEA92BE992DB0075B264 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		719BEEAC2BEA09430075B264 /* CocktailDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDetailsView.swift; sourceTree = "<group>"; };
+		719BEEAE2BEA094A0075B264 /* CocktailDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDetailsViewModel.swift; sourceTree = "<group>"; };
+		719BEEB02BEA097A0075B264 /* CocktailDetailsContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDetailsContext.swift; sourceTree = "<group>"; };
+		719BEEB22BEA0A980075B264 /* Decodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+.swift"; sourceTree = "<group>"; };
+		719BEEB42BEA0BBD0075B264 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
+		719BEEB62BEA0D440075B264 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		719BEEB82BEA0DE40075B264 /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
+		719BEEBB2BEA11EB0075B264 /* CocktailDetailsFetchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDetailsFetchType.swift; sourceTree = "<group>"; };
+		719BEEBD2BEA16690075B264 /* GetCocktailDetailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCocktailDetailsRequest.swift; sourceTree = "<group>"; };
+		719BEEC02BEA18770075B264 /* IconTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTitleView.swift; sourceTree = "<group>"; };
+		719BEEC22BEA187B0075B264 /* IconTitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTitleViewModel.swift; sourceTree = "<group>"; };
+		719BEEC42BEA4E0E0075B264 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		719BEEC62BEA5A940075B264 /* Dictionary+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+.swift"; sourceTree = "<group>"; };
+		719BEEC82BEAC7D30075B264 /* GetRandomCocktailDetailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRandomCocktailDetailsRequest.swift; sourceTree = "<group>"; };
+		719BEECD2BEAD7E10075B264 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +127,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				719BEE772BE969F00075B264 /* Kingfisher in Frameworks */,
+				719BEEA22BE989760075B264 /* CombineExt in Frameworks */,
+				719BEE802BE97E920075B264 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +172,7 @@
 		719BEE392BE966B20075B264 /* Cocktails */ = {
 			isa = PBXGroup;
 			children = (
+				719BEE782BE97E460075B264 /* API */,
 				719BEE662BE967330075B264 /* Resources */,
 				719BEE652BE9672E0075B264 /* Common */,
 				719BEE642BE967280075B264 /* Modules */,
@@ -140,6 +209,8 @@
 		719BEE642BE967280075B264 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				719BEECA2BEAD7BC0075B264 /* Filters */,
+				719BEEAB2BEA09330075B264 /* CocktailDetails */,
 				719BEE6C2BE967880075B264 /* Home */,
 			);
 			path = Modules;
@@ -148,6 +219,7 @@
 		719BEE652BE9672E0075B264 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				719BEE9A2BE987380075B264 /* Extensions */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -158,6 +230,7 @@
 				719BEE402BE966B40075B264 /* Preview Content */,
 				719BEE3E2BE966B40075B264 /* Assets.xcassets */,
 				719BEE6B2BE967640075B264 /* Localizable.strings */,
+				719BEEA92BE992DB0075B264 /* Assets.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -175,6 +248,7 @@
 		719BEE6F2BE968420075B264 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				719BEEA62BE992510075B264 /* SearchBarView */,
 				719BEE702BE968470075B264 /* CocktailView */,
 			);
 			path = Views;
@@ -187,6 +261,152 @@
 				719BEE732BE9685A0075B264 /* CocktailViewModel.swift */,
 			);
 			path = CocktailView;
+			sourceTree = "<group>";
+		};
+		719BEE782BE97E460075B264 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				719BEE7B2BE97E550075B264 /* Models */,
+				719BEE7A2BE97E4E0075B264 /* Services */,
+				719BEE792BE97E4A0075B264 /* Base */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		719BEE792BE97E4A0075B264 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				719BEE7C2BE97E700075B264 /* APIClient.swift */,
+				719BEE812BE97E9F0075B264 /* APIRequest.swift */,
+				719BEE832BE97FD40075B264 /* AuthenticationType.swift */,
+				719BEE852BE97FEA0075B264 /* ContentType.swift */,
+				719BEE872BE97FF90075B264 /* Endpoint.swift */,
+				719BEE892BE980040075B264 /* NetworkConstants.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		719BEE7A2BE97E4E0075B264 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				719BEE932BE9845B0075B264 /* Requests */,
+				719BEE912BE984050075B264 /* CocktailService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		719BEE7B2BE97E550075B264 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				719BEE992BE986A90075B264 /* Drinks */,
+				719BEE962BE9867F0075B264 /* Basic */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		719BEE932BE9845B0075B264 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				719BEE942BE9846B0075B264 /* SearchCocktailsRequest.swift */,
+				719BEEBD2BEA16690075B264 /* GetCocktailDetailsRequest.swift */,
+				719BEEC82BEAC7D30075B264 /* GetRandomCocktailDetailsRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		719BEE962BE9867F0075B264 /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				719BEE8B2BE981FF0075B264 /* Model.swift */,
+				719BEE972BE986890075B264 /* APIError.swift */,
+			);
+			path = Basic;
+			sourceTree = "<group>";
+		};
+		719BEE992BE986A90075B264 /* Drinks */ = {
+			isa = PBXGroup;
+			children = (
+				719BEE8D2BE9820B0075B264 /* Drinks.swift */,
+				719BEE8F2BE982200075B264 /* Drink.swift */,
+			);
+			path = Drinks;
+			sourceTree = "<group>";
+		};
+		719BEE9A2BE987380075B264 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				719BEEA32BE98D060075B264 /* SwiftUI */,
+				719BEE9B2BE987490075B264 /* Foundation */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		719BEE9B2BE987490075B264 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				719BEE9C2BE9874F0075B264 /* URL+.swift */,
+				719BEE9E2BE987550075B264 /* Encodable+.swift */,
+				719BEEB22BEA0A980075B264 /* Decodable+.swift */,
+				719BEEB42BEA0BBD0075B264 /* DateFormatter+.swift */,
+				719BEEB62BEA0D440075B264 /* Date+.swift */,
+				719BEEB82BEA0DE40075B264 /* String+Localization.swift */,
+				719BEEC42BEA4E0E0075B264 /* String+.swift */,
+				719BEEC62BEA5A940075B264 /* Dictionary+.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		719BEEA32BE98D060075B264 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				719BEEA42BE98D0C0075B264 /* Color+.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		719BEEA62BE992510075B264 /* SearchBarView */ = {
+			isa = PBXGroup;
+			children = (
+				719BEEA72BE9925A0075B264 /* SearchBarView.swift */,
+			);
+			path = SearchBarView;
+			sourceTree = "<group>";
+		};
+		719BEEAB2BEA09330075B264 /* CocktailDetails */ = {
+			isa = PBXGroup;
+			children = (
+				719BEEBF2BEA186C0075B264 /* Views */,
+				719BEEBA2BEA11E20075B264 /* Models */,
+				719BEEAC2BEA09430075B264 /* CocktailDetailsView.swift */,
+				719BEEAE2BEA094A0075B264 /* CocktailDetailsViewModel.swift */,
+				719BEEB02BEA097A0075B264 /* CocktailDetailsContext.swift */,
+			);
+			path = CocktailDetails;
+			sourceTree = "<group>";
+		};
+		719BEEBA2BEA11E20075B264 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				719BEEBB2BEA11EB0075B264 /* CocktailDetailsFetchType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		719BEEBF2BEA186C0075B264 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				719BEEC02BEA18770075B264 /* IconTitleView.swift */,
+				719BEEC22BEA187B0075B264 /* IconTitleViewModel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		719BEECA2BEAD7BC0075B264 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				719BEECD2BEAD7E10075B264 /* FiltersView.swift */,
+			);
+			path = Filters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +427,8 @@
 			name = Cocktails;
 			packageProductDependencies = (
 				719BEE762BE969F00075B264 /* Kingfisher */,
+				719BEE7F2BE97E920075B264 /* Alamofire */,
+				719BEEA12BE989760075B264 /* CombineExt */,
 			);
 			productName = Cocktails;
 			productReference = 719BEE372BE966B20075B264 /* Cocktails.app */;
@@ -282,6 +504,8 @@
 			mainGroup = 719BEE2E2BE966B20075B264;
 			packageReferences = (
 				719BEE752BE969F00075B264 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				719BEE7E2BE97E920075B264 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				719BEEA02BE989760075B264 /* XCRemoteSwiftPackageReference "CombineExt" */,
 			);
 			productRefGroup = 719BEE382BE966B20075B264 /* Products */;
 			projectDirPath = "";
@@ -326,11 +550,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				719BEECE2BEAD7E10075B264 /* FiltersView.swift in Sources */,
 				719BEE3D2BE966B20075B264 /* HomeView.swift in Sources */,
+				719BEEA52BE98D0C0075B264 /* Color+.swift in Sources */,
+				719BEE9D2BE9874F0075B264 /* URL+.swift in Sources */,
+				719BEE822BE97E9F0075B264 /* APIRequest.swift in Sources */,
+				719BEE8A2BE980040075B264 /* NetworkConstants.swift in Sources */,
+				719BEEAD2BEA09430075B264 /* CocktailDetailsView.swift in Sources */,
+				719BEE982BE986890075B264 /* APIError.swift in Sources */,
+				719BEEB72BEA0D440075B264 /* Date+.swift in Sources */,
+				719BEEB92BEA0DE40075B264 /* String+Localization.swift in Sources */,
+				719BEE8C2BE981FF0075B264 /* Model.swift in Sources */,
 				719BEE6E2BE967970075B264 /* HomeViewModel.swift in Sources */,
+				719BEEC72BEA5A940075B264 /* Dictionary+.swift in Sources */,
+				719BEEBC2BEA11EB0075B264 /* CocktailDetailsFetchType.swift in Sources */,
 				719BEE722BE968530075B264 /* CocktailView.swift in Sources */,
+				719BEE882BE97FF90075B264 /* Endpoint.swift in Sources */,
+				719BEEC52BEA4E0E0075B264 /* String+.swift in Sources */,
+				719BEEA82BE9925A0075B264 /* SearchBarView.swift in Sources */,
+				719BEEBE2BEA16690075B264 /* GetCocktailDetailsRequest.swift in Sources */,
+				719BEE8E2BE9820B0075B264 /* Drinks.swift in Sources */,
+				719BEEB12BEA097A0075B264 /* CocktailDetailsContext.swift in Sources */,
+				719BEEAF2BEA094A0075B264 /* CocktailDetailsViewModel.swift in Sources */,
+				719BEEAA2BE992DB0075B264 /* Assets.swift in Sources */,
+				719BEEC12BEA18770075B264 /* IconTitleView.swift in Sources */,
 				719BEE742BE9685A0075B264 /* CocktailViewModel.swift in Sources */,
+				719BEEB32BEA0A980075B264 /* Decodable+.swift in Sources */,
+				719BEE842BE97FD40075B264 /* AuthenticationType.swift in Sources */,
+				719BEE952BE9846B0075B264 /* SearchCocktailsRequest.swift in Sources */,
 				719BEE3B2BE966B20075B264 /* CocktailsApp.swift in Sources */,
+				719BEEB52BEA0BBD0075B264 /* DateFormatter+.swift in Sources */,
+				719BEE9F2BE987550075B264 /* Encodable+.swift in Sources */,
+				719BEEC92BEAC7D30075B264 /* GetRandomCocktailDetailsRequest.swift in Sources */,
+				719BEE7D2BE97E700075B264 /* APIClient.swift in Sources */,
+				719BEE902BE982200075B264 /* Drink.swift in Sources */,
+				719BEE862BE97FEA0075B264 /* ContentType.swift in Sources */,
+				719BEE922BE984050075B264 /* CocktailService.swift in Sources */,
+				719BEEC32BEA187B0075B264 /* IconTitleViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,6 +937,22 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		719BEE7E2BE97E920075B264 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		719BEEA02BE989760075B264 /* XCRemoteSwiftPackageReference "CombineExt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineExt.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -688,6 +960,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 719BEE752BE969F00075B264 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		719BEE7F2BE97E920075B264 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 719BEE7E2BE97E920075B264 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		719BEEA12BE989760075B264 /* CombineExt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 719BEEA02BE989760075B264 /* XCRemoteSwiftPackageReference "CombineExt" */;
+			productName = CombineExt;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

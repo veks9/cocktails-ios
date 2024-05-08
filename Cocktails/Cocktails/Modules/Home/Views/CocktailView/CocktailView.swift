@@ -24,11 +24,13 @@ struct CocktailView: View {
                     .font(.subheadline)
                     .fontWeight(.medium)
                     .lineLimit(1)
-                Text(viewModel.subtitle)
-                    .font(.subheadline)
-                    .foregroundStyle(.gray)
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.8)
+                if let subtitle = viewModel.subtitle {
+                    Text(subtitle)
+                        .font(.subheadline)
+                        .foregroundStyle(.gray)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.8)
+                }
             }
             .padding()
             Spacer()
@@ -40,6 +42,7 @@ struct CocktailView: View {
 #Preview {
     CocktailView(
         viewModel: CocktailViewModel(
+            id: "1",
             title: "Martini",
             subtitle: "A classic Martini is made from gin and vermouth and garnished with either an olive or lemon twist.",
             imageUrl: URL(string: "https://i0.wp.com/www.splashoftaste.com/wp-content/uploads/2022/05/dirty-martini-7-2-768x1024.jpg")

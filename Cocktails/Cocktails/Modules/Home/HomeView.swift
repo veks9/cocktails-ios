@@ -7,21 +7,94 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct HomeView<ViewModel: HomeViewModeling>: View {
+    @StateObject var viewModel: ViewModel
+    
     var body: some View {
+        NavigationStack {
+            cocktailsList
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbarBackground(.visible, for: .navigationBar)
+                .toolbarBackground(Color.appPrimary, for: .navigationBar)
+                .toolbar(content: {
+                    ToolbarItem(placement: .principal) {
+                        SearchBarView(searchText: $viewModel.searchText)
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        filterIconView
+                    }
+                })
+        }
+    }
+    
+    var filterIconView: some View {
+        NavigationLink {
+            Circle()
+                .fill(Color.red)
+        } label: {
+            Assets.filter.image?
+                .resizable()
+                .frame(width: 20, height: 20)
+        }
+    }
+    
+    var cocktailsList: some View {
         List(content: {
-            CocktailView(viewModel: CocktailViewModel(
-                title: "Martini",
-                subtitle: "A classic Martini is made from gin and vermouth and garnished with either an olive or lemon twist.",
-                imageUrl: URL(string: "https://i0.wp.com/www.splashoftaste.com/wp-content/uploads/2022/05/dirty-martini-7-2-768x1024.jpg")
-            ))
+            ForEach(viewModel.cocktailViewModels, id: \.id) { cocktailViewModel in
+                NavigationLink {
+                    getCocktailDetailsView(for: cocktailViewModel.id)
+                } label: {
+                    CocktailView(viewModel: cocktailViewModel)
+                }
                 .listRowInsets(EdgeInsets())
+                .listRowBackground(Color.backgroundPrimary)
+            }
         })
-        .listStyle(.inset)
-        .background(Color.white)
+        .safeAreaInset(edge: .bottom) {
+            floatingButton
+        }
+        .listStyle(.plain)
+        .background(Color.backgroundPrimary)
+    }
+    
+    var floatingButton: some View {
+        NavigationLink {
+            getCocktailDetailsView()
+        } label: {
+            Text("home_floating_button_title".localized().uppercased())
+                .font(.headline)
+                .fontWeight(.medium)
+                .foregroundStyle(Color.white)
+                .padding(.horizontal, 40)
+        }
+        .frame(height: 45)
+        .background(Color.appPrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 22.5))
+    }
+    
+    @ViewBuilder
+    func getCocktailDetailsView(for id: String) -> some View {
+        CocktailDetailsView(
+            viewModel: CocktailDetailsViewModel(
+                context: CocktailDetailsContext(
+                    fetchType: .id(id)
+                )
+            )
+        )
+    }
+    
+    @ViewBuilder
+    func getCocktailDetailsView() -> some View {
+        CocktailDetailsView(
+            viewModel: CocktailDetailsViewModel(
+                context: CocktailDetailsContext(
+                    fetchType: .random
+                )
+            )
+        )
     }
 }
 
 #Preview {
-    HomeView()
+    HomeView(viewModel: HomeViewModel())
 }
