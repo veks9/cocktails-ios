@@ -13,7 +13,11 @@ struct SearchBarView: View {
     var body: some View {
         HStack(spacing: 8, content: {
             searchIcon
-            TextField("Type to search", text: $searchText)
+            TextField(
+                "",
+                text: $searchText,
+                prompt: placeholderView
+            )
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
             Spacer()
@@ -30,6 +34,11 @@ struct SearchBarView: View {
             .resizable()
             .renderingMode(.original)
             .frame(width: 15, height: 15)
+    }
+    
+    var placeholderView: Text {
+        Text("search_bar_placeholder".localized())
+            .foregroundColor(.gray)
     }
     
     var cancelButton: some View {

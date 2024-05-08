@@ -22,4 +22,9 @@ extension Color {
     static var backgroundPrimary: Color {
         Color(UIColor(red: 244.0 / 255.0, green: 247.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0))
     }
+    
+    /// r: 163 g: 171 b: 195
+    static var appDisabled: Color {
+        Color(UIColor(red: 163.0 / 255.0, green: 171.0 / 255.0, blue: 195.0 / 255.0, alpha: 1.0))
+    }
 }

@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 struct GetCocktailDetailsRequest: APIRequest {
-    typealias ResponseType = Model.Drinks
+    typealias ResponseType = Model.Response<[Model.Drink]>
     
     var path: String {
         Endpoint.details.path

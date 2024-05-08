@@ -14,6 +14,7 @@ struct IconTitleView: View {
         VStack {
             imageView
             Text(viewModel.title)
+                .foregroundStyle(Color.black)
                 .font(.footnote)
                 .lineLimit(1)
         }

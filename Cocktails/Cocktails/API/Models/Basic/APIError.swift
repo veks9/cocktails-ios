@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 extension Model {
-    struct APIError: Error, Codable {
+    struct APIError: Error, Decodable {
         let errorMessage: String
         let statusCode: Int?
 

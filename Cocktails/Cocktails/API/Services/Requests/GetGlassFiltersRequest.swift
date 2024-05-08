@@ -1,24 +1,23 @@
 //
-//  SearchCocktailsRequest.swift
+//  GetGlassFiltersRequest.swift
 //  Cocktails
 //
-//  Created by Vedran Hernaus on 06.05.2024..
+//  Created by Vedran Hernaus on 08.05.2024..
 //
 
 import Foundation
 import Alamofire
 
-struct SearchCocktailsRequest: APIRequest {
-    typealias ResponseType = Model.Response<[Model.Drink]>
+struct GetGlassFiltersRequest: APIRequest {
+    typealias ResponseType = Model.Response<[Model.GlassFilter]>
     
     var path: String {
-        Endpoint.search.path
+        Endpoint.list.path
     }
     
-    let searchQuery: String?
     var query: [String : String?]? {
         [
-            "s": searchQuery
+            "g": "list"
         ]
     }
     var httpMethod: HTTPMethod = .get
@@ -26,4 +25,3 @@ struct SearchCocktailsRequest: APIRequest {
     var authenticationType: AuthenticationType = .none
     var contentType: ContentType = .applicationJson
 }
-

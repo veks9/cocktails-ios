@@ -29,8 +29,7 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
     
     var filterIconView: some View {
         NavigationLink {
-            Circle()
-                .fill(Color.red)
+            FiltersView(viewModel: FiltersViewModel())
         } label: {
             Assets.filter.image?
                 .resizable()
@@ -41,10 +40,12 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
     var cocktailsList: some View {
         List(content: {
             ForEach(viewModel.cocktailViewModels, id: \.id) { cocktailViewModel in
-                NavigationLink {
-                    getCocktailDetailsView(for: cocktailViewModel.id)
-                } label: {
+                ZStack {
                     CocktailView(viewModel: cocktailViewModel)
+                    NavigationLink(destination: getCocktailDetailsView(for: cocktailViewModel.id)) {
+                        EmptyView()
+                    }
+                    .opacity(0.0)
                 }
                 .listRowInsets(EdgeInsets())
                 .listRowBackground(Color.backgroundPrimary)

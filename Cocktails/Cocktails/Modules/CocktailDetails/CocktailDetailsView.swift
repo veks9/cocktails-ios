@@ -47,6 +47,7 @@ struct CocktailDetailsView<ViewModel: CocktailDetailsViewModeling>: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text(viewModel.navigationTitle)
+                    .foregroundStyle(Color.white)
                     .foregroundColor(.white)
                     .fontWeight(.semibold)
             }
@@ -90,9 +91,11 @@ struct CocktailDetailsView<ViewModel: CocktailDetailsViewModeling>: View {
         if let ingredientsAndMeasures = viewModel.ingredientsAndMeasures {
             VStack(alignment: .leading, spacing: 10) {
                 Text("cocktail_details_ingredients_section_title".localized())
+                    .foregroundStyle(Color.black)
                     .font(.subheadline)
                     .fontWeight(.semibold)
                 Text(ingredientsAndMeasures)
+                    .foregroundStyle(Color.black)
                     .font(.footnote)
                     .lineLimit(nil)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -107,9 +110,11 @@ struct CocktailDetailsView<ViewModel: CocktailDetailsViewModeling>: View {
         if let directions = viewModel.directions {
             VStack(alignment: .leading, spacing: 10) {
                 Text("cocktail_details_directions_section_title".localized())
+                    .foregroundStyle(Color.black)
                     .font(.subheadline)
                     .fontWeight(.semibold)
                 Text(directions)
+                    .foregroundStyle(Color.black)
                     .font(.footnote)
                     .lineLimit(nil)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -123,6 +128,7 @@ struct CocktailDetailsView<ViewModel: CocktailDetailsViewModeling>: View {
     var lastModifiedView: some View {
         if let lastModifiedFormatted = viewModel.lastModifiedFormatted {
             Text(lastModifiedFormatted)
+                .foregroundStyle(Color.black)
                 .lineLimit(nil)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()

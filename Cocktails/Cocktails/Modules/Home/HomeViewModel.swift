@@ -43,7 +43,7 @@ final class HomeViewModel: HomeViewModeling {
             // TODO: - remove ignore failure
             .ignoreFailure()
             .map { drinksResponse in
-                drinksResponse.drinks.map {
+                drinksResponse.data.map {
                     CocktailViewModel(
                         id: $0.id,
                         title: $0.name,

@@ -8,7 +8,7 @@
 import Foundation
 
 extension Model {
-    struct Drink: Codable, Hashable {
+    struct Drink: Decodable, Hashable {
         let id: String
         let name: String
         let category: String?

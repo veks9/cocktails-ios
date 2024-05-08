@@ -21,6 +21,7 @@ struct CocktailView: View {
                 .clipped()
             VStack(alignment: .leading) {
                 Text(viewModel.title)
+                    .foregroundStyle(Color.black)
                     .font(.subheadline)
                     .fontWeight(.medium)
                     .lineLimit(1)

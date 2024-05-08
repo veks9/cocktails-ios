@@ -11,6 +11,7 @@ enum Endpoint {
     case search
     case details
     case random
+    case list
 
     var path: String {
         NetworkConstants.baseURLString + _path
@@ -24,6 +25,8 @@ enum Endpoint {
             return "/lookup.php"
         case .random:
             return "/random.php"
+        case .list:
+            return "/list.php"
         }
     }
 }
