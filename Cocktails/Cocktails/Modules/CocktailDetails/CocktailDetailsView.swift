@@ -9,6 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct CocktailDetailsView<ViewModel: CocktailDetailsViewModeling>: View {
+    @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: ViewModel
     
     var body: some View {
@@ -44,6 +45,8 @@ struct CocktailDetailsView<ViewModel: CocktailDetailsViewModeling>: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbarBackground(Color.appPrimary, for: .navigationBar)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: leadingNavigationBarItem)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text(viewModel.navigationTitle)
@@ -52,6 +55,14 @@ struct CocktailDetailsView<ViewModel: CocktailDetailsViewModeling>: View {
                     .fontWeight(.semibold)
             }
         }
+    }
+    
+    var leadingNavigationBarItem: some View {
+        Assets.back.image?
+            .onTapGesture {
+                presentationMode.wrappedValue.dismiss()
+            }
+            .frame(width: 40, height: 40)
     }
     
     var image: some View {

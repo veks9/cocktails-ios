@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FiltersView<ViewModel: FiltersViewModeling>: View {
+    @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: ViewModel
     
     var body: some View {
@@ -16,6 +17,8 @@ struct FiltersView<ViewModel: FiltersViewModeling>: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbarBackground(Color.appPrimary, for: .navigationBar)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: leadingNavigationBarItem)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("filters_navigation_title".localized())
@@ -26,6 +29,15 @@ struct FiltersView<ViewModel: FiltersViewModeling>: View {
                     trailingToolbarItem
                 }
             }
+            .preferredColorScheme(.light)
+    }
+    
+    var leadingNavigationBarItem: some View {
+        Assets.back.image?
+            .onTapGesture {
+                presentationMode.wrappedValue.dismiss()
+            }
+            .frame(width: 40, height: 40)
     }
     
     var filtersList: some View {

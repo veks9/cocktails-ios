@@ -9,22 +9,19 @@ import SwiftUI
 
 struct SearchBarView: View {
     @Binding var searchText: String
+    @FocusState.Binding var isFocused: Bool
     
     var body: some View {
         HStack(spacing: 8, content: {
             searchIcon
-            TextField(
-                "",
-                text: $searchText,
-                prompt: placeholderView
-            )
-                .autocorrectionDisabled()
-                .textInputAutocapitalization(.never)
+            textField
             Spacer()
-            cancelButton
+            if !searchText.isEmpty {
+                cancelButton
+            }
         })
         .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 4))
-        .frame(height: 35)
+        .frame(height: 40)
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }
@@ -37,8 +34,26 @@ struct SearchBarView: View {
     }
     
     var placeholderView: Text {
-        Text("search_bar_placeholder".localized())
+        Text(
+            isFocused ?
+            "search_bar_focused_placeholder".localized() :
+            "search_bar_placeholder".localized()
+        )
             .foregroundColor(.gray)
+    }
+    
+    var textField: some View {
+        TextField(
+            "",
+            text: $searchText,
+            prompt: placeholderView
+        )
+        .foregroundStyle(Color.black)
+        .focused($isFocused)
+        .submitLabel(.search)
+        .keyboardType(.alphabet)
+        .autocorrectionDisabled()
+        .textInputAutocapitalization(.never)
     }
     
     var cancelButton: some View {
@@ -48,18 +63,13 @@ struct SearchBarView: View {
             ZStack {
                 Circle()
                     .fill(Color.lightGray)
-                    .frame(width: 15, height: 15)
+                    .padding(.all, 5)
                 Assets.searchCancel.image?
                     .resizable()
                     .renderingMode(.original)
-                    .padding(.all, 4)
+                    .padding(.all, 10)
             }
+            .frame(width: 30, height: 30)
         })
     }
 }
-
-#Preview {
-    SearchBarView(searchText: .constant(""))
-}
-
-

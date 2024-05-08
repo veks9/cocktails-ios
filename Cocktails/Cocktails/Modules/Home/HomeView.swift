@@ -9,21 +9,28 @@ import SwiftUI
 
 struct HomeView<ViewModel: HomeViewModeling>: View {
     @StateObject var viewModel: ViewModel
+    @FocusState var isSearchBarFocused: Bool
+    @State var isFilterButtonShown: Bool = true
     
     var body: some View {
         NavigationStack {
-            cocktailsList
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbarBackground(.visible, for: .navigationBar)
-                .toolbarBackground(Color.appPrimary, for: .navigationBar)
-                .toolbar(content: {
-                    ToolbarItem(placement: .principal) {
-                        SearchBarView(searchText: $viewModel.searchText)
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        filterIconView
-                    }
-                })
+            VStack(spacing: 0) {
+                topView
+                cocktailsList
+            }
+        }
+    }
+    
+    var searchBarView: some View {
+        SearchBarView(
+            searchText: $viewModel.searchText,
+            isFocused: $isSearchBarFocused
+        )
+        .onChange(of: isSearchBarFocused) { _, newValue in
+            viewModel.onSearchBarFocusChange(newValue)
+            withAnimation {
+                isFilterButtonShown = !isSearchBarFocused
+            }
         }
     }
     
@@ -35,6 +42,20 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
                 .resizable()
                 .frame(width: 20, height: 20)
         }
+    }
+    
+    var topView: some View {
+        VStack {
+            HStack {
+                searchBarView
+                if isFilterButtonShown {
+                    filterIconView
+                }
+            }
+        }
+        .padding(.all, 10)
+        .background(Color.appPrimary)
+        .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
     }
     
     var cocktailsList: some View {
@@ -53,7 +74,9 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
         })
         .safeAreaInset(edge: .bottom) {
             floatingButton
+                .padding()
         }
+        .scrollDismissesKeyboard(.interactively)
         .listStyle(.plain)
         .background(Color.backgroundPrimary)
     }
@@ -73,7 +96,6 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
         .clipShape(RoundedRectangle(cornerRadius: 22.5))
     }
     
-    @ViewBuilder
     func getCocktailDetailsView(for id: String) -> some View {
         CocktailDetailsView(
             viewModel: CocktailDetailsViewModel(
@@ -84,7 +106,6 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
         )
     }
     
-    @ViewBuilder
     func getCocktailDetailsView() -> some View {
         CocktailDetailsView(
             viewModel: CocktailDetailsViewModel(
