@@ -16,18 +16,20 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
         if viewModel.isLoading {
             LoadingView()
         } else {
-            ZStack {
-                VStack(spacing: 0) {
-                    topView
+            GeometryReader { geometry in
+                ZStack {
                     cocktailsList
+                        .padding(.top, geometry.safeAreaInsets.top)
+                    VStack {
+                        topView
+                        Spacer()
+                        floatingButton
+                            .padding()
+                    }
                 }
-                VStack {
-                    Spacer()
-                    floatingButton
-                        .padding()
-                }
+                .background(Color.backgroundPrimary)
+                .toolbar(.hidden, for: .navigationBar)
             }
-            .toolbar(.hidden, for: .navigationBar)
         }
     }
     
@@ -61,9 +63,9 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
             }
         }
         .padding(.all, 10)
-        .background(
-            Color.appPrimary
-        )
+        .background(Color.appPrimary)
+        .compositingGroup()
+        .shadow(radius: 10)
     }
     
     var cocktailsList: some View {
