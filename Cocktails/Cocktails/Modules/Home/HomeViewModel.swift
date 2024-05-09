@@ -13,6 +13,7 @@ protocol HomeViewModeling: ObservableObject {
     var cocktailViewModels: [CocktailViewModel] { get }
     var searchText: String { get set }
     var isLoading: Bool { get }
+    var isFilterButtonShown: Bool { get }
     
     func onSearchBarFocusChange(_ focus: Bool)
 }
@@ -39,6 +40,7 @@ final class HomeViewModel: HomeViewModeling {
     @Published private(set) var cocktailViewModels: [CocktailViewModel] = []
     @Published var searchText: String = ""
     @Published private(set) var isLoading: Bool = true
+    @Published private(set) var isFilterButtonShown: Bool = true
     
     // MARK: - Private functions
     
@@ -56,12 +58,7 @@ final class HomeViewModel: HomeViewModeling {
                     .ignoreFailure()
                     .map { drinksResponse in
                         drinksResponse.data.map {
-                            CocktailViewModel(
-                                id: $0.id,
-                                title: $0.name,
-                                subtitle: $0.ingredients.compactMap({ $0 }).joined(separator: ", "),
-                                imageUrl: $0.thumbnailUrl
-                            )
+                            CocktailViewModel(from: $0)
                         }
                     }
                     .eraseToAnyPublisher()
@@ -71,6 +68,15 @@ final class HomeViewModel: HomeViewModeling {
             self?.isLoading = false
         })
         .assign(to: &$cocktailViewModels)
+        
+        Publishers.CombineLatest(
+            $searchText,
+            isSearchFocusedSubject
+        )
+        .map { searchText, isSearchFocused in
+            searchText.isEmpty && !isSearchFocused
+        }
+        .assign(to: &$isFilterButtonShown)
     }
 }
 

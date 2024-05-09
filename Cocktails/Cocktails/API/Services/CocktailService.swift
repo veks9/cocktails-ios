@@ -15,6 +15,11 @@ protocol CocktailServicing {
     func getAlcoholicFilters() -> Future<Model.Response<[Model.AlcoholicFilter]>, Model.APIError>
     func getCategoryFilters() -> Future<Model.Response<[Model.CategoryFilter]>, Model.APIError>
     func getGlassFilters() -> Future<Model.Response<[Model.GlassFilter]>, Model.APIError>
+    func filterCocktails(
+        alcoholicFilter: String?,
+        categoryFilter: String?,
+        glassFilter: String?
+    ) -> Future<Model.Response<[Model.Drink]>, Model.APIError>
 }
 
 final class CocktailService: CocktailServicing {
@@ -44,5 +49,19 @@ final class CocktailService: CocktailServicing {
     
     func getGlassFilters() -> Future<Model.Response<[Model.GlassFilter]>, Model.APIError> {
         APIClient.shared.performRequest(GetGlassFiltersRequest())
+    }
+    
+    func filterCocktails(
+        alcoholicFilter: String? = nil,
+        categoryFilter: String? = nil,
+        glassFilter: String? = nil
+    ) -> Future<Model.Response<[Model.Drink]>, Model.APIError> {
+        APIClient.shared.performRequest(
+            FilterCocktailsRequest(
+                alcoholicFilter: alcoholicFilter?.replacingOccurrences(of: " ", with: "_"),
+                categoryFilter: categoryFilter?.replacingOccurrences(of: " ", with: "_"),
+                glassFilter: glassFilter?.replacingOccurrences(of: " ", with: "_")
+            )
+        )
     }
 }

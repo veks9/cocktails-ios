@@ -8,9 +8,9 @@
 import SwiftUI
 
 extension Color {
-    /// r: 100 g: 151 b: 250
+    /// r: 128 g: 160 b: 248
     static var appPrimary: Color {
-        Color(UIColor(red: 100.0 / 255.0, green: 151.0 / 255.0, blue: 250.0 / 255.0, alpha: 1.0))
+        Color(UIColor(red: 128.0 / 255.0, green: 160.0 / 255.0, blue: 248.0 / 255.0, alpha: 1.0))
     }
     
     /// r: 242 g: 242 b: 242

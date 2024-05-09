@@ -24,6 +24,13 @@ final class CocktailViewModel {
         self.subtitle = subtitle
         self.imageUrl = imageUrl
     }
+    
+    init(from model: Model.Drink) {
+        self.id = model.id
+        self.title = model.name
+        self.subtitle = model.ingredients.compactMap({ $0 }).joined(separator: ", ")
+        self.imageUrl = model.thumbnailUrl
+    }
 }
 
 // MARK: - Hashable

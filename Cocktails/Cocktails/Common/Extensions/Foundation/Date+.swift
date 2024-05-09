@@ -11,24 +11,31 @@ extension Date {
     func toRelativeDate() -> String {
         let calendar = Calendar.current
         let now = Date()
-        
-        let components = calendar.dateComponents([.year, .month, .weekOfYear, .day], from: self, to: now)
-        
-        if let year = components.year, year > 0 {
-            return year == 1 ?
-            "relative_date_year_ago".localized(year) :
-            "relative_date_years_ago".localized(year)
+
+        let startOfDay = calendar.startOfDay(for: now)
+        let startOfThisWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: startOfDay))!
+        let startOfThisMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: startOfDay))!
+        let startOfThisYear = calendar.date(from: calendar.dateComponents([.year], from: startOfDay))!
+
+        if self >= startOfThisYear {
+            if self >= startOfThisMonth {
+                if self >= startOfThisWeek {
+                    if self >= startOfDay {
+                        return Localization.relativeDateToday.localized()
+                    } else {
+                        return Localization.relativeDateThisWeek.localized()
+                    }
+                } else {
+                    return Localization.relativeDateThisMonth.localized()
+                }
+            } else {
+                return Localization.relativeDateThisYear.localized()
+            }
+        } else {
+            let yearsDifference = calendar.dateComponents([.year], from: self, to: now).year!
+            return yearsDifference == 1 ?
+            Localization.relativeDateYearAgo.localized(yearsDifference) :
+            Localization.relativeDateYearsAgo.localized(yearsDifference)
         }
-        if let month = components.month, month > 0 {
-            return "relative_date_this_month".localized()
-        }
-        if let week = components.weekOfYear, week > 0 {
-            return "relative_date_this_week".localized()
-        }
-        if let day = components.day, day > 0 {
-            return "relative_date_today".localized()
-        }
-        
-        return "relative_date_unknown".localized()
     }
 }

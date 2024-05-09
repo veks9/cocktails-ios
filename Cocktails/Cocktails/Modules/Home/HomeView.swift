@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeView<ViewModel: HomeViewModeling>: View {
     @StateObject var viewModel: ViewModel
     @FocusState var isSearchBarFocused: Bool
-    @State var isFilterButtonShown: Bool = true
     
     var body: some View {
         if viewModel.isLoading {
@@ -39,9 +38,6 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
         )
         .onChange(of: isSearchBarFocused) { _, newValue in
             viewModel.onSearchBarFocusChange(newValue)
-            withAnimation {
-                isFilterButtonShown = !isSearchBarFocused
-            }
         }
     }
     
@@ -59,35 +55,37 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
         VStack {
             HStack {
                 searchBarView
-                if isFilterButtonShown {
+                if viewModel.isFilterButtonShown {
                     filterIconView
                 }
             }
         }
         .padding(.all, 10)
         .background(Color.appPrimary)
+        // TODO: - not correct
         .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
     }
     
     var cocktailsList: some View {
-        List(content: {
-            ForEach(viewModel.cocktailViewModels, id: \.id) { cocktailViewModel in
-                ZStack {
-                    CocktailView(viewModel: cocktailViewModel)
-                    NavigationLink(destination: getCocktailDetailsView(for: cocktailViewModel.id)) {
-                        EmptyView()
+        List(
+            content: {
+                ForEach(viewModel.cocktailViewModels, id: \.id) { cocktailViewModel in
+                    ZStack {
+                        CocktailView(viewModel: cocktailViewModel)
+                        NavigationLink(destination: getCocktailDetailsView(for: cocktailViewModel.id)) {
+                            EmptyView()
+                        }
+                        .opacity(0.0)
                     }
-                    .opacity(0.0)
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.backgroundPrimary)
                 }
-                .listRowInsets(EdgeInsets())
-                .listRowBackground(Color.backgroundPrimary)
-            }
-            Spacer()
-                .listRowInsets(EdgeInsets())
-                .listRowBackground(Color.backgroundPrimary)
-                .listRowSeparator(.hidden)
-                .frame(height: 70)
-        })
+                Spacer()
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.backgroundPrimary)
+                    .listRowSeparator(.hidden)
+                    .frame(height: 70)
+            })
         .scrollDismissesKeyboard(.interactively)
         .listStyle(.plain)
         .background(Color.backgroundPrimary)
@@ -97,13 +95,14 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
         NavigationLink {
             getCocktailDetailsView()
         } label: {
-            Text("home_floating_button_title".localized().uppercased())
+            Text(Localization.homeFloatingButtonTitle.localized().uppercased())
                 .font(.headline)
                 .fontWeight(.medium)
                 .foregroundStyle(Color.white)
+                .frame(height: 45)
                 .padding(.horizontal, 40)
+                .contentShape(Rectangle())
         }
-        .frame(height: 45)
         .background(Color.appPrimary)
         .clipShape(RoundedRectangle(cornerRadius: 22.5))
     }

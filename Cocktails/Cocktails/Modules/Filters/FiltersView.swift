@@ -24,7 +24,7 @@ struct FiltersView<ViewModel: FiltersViewModeling>: View {
                 .navigationBarItems(leading: leadingNavigationBarItem)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
-                        Text("filters_navigation_title".localized())
+                        Text(Localization.filtersNavigationTitle.localized())
                             .foregroundColor(.white)
                             .fontWeight(.semibold)
                     }
@@ -32,7 +32,6 @@ struct FiltersView<ViewModel: FiltersViewModeling>: View {
                         trailingToolbarItem
                     }
                 }
-                .preferredColorScheme(.light)
         }
     }
     
@@ -85,7 +84,7 @@ struct FiltersView<ViewModel: FiltersViewModeling>: View {
         Button(action: {
             viewModel.onResetButtonTap()
         }, label: {
-            Text("filters_trailing_button_title".localized())
+            Text(Localization.filtersTrailingButtonTitle.localized())
                 .foregroundStyle(
                     viewModel.isResetButtonDisabled ?
                     Color.appDisabled :
@@ -97,9 +96,9 @@ struct FiltersView<ViewModel: FiltersViewModeling>: View {
     
     var floatingButton: some View {
         NavigationLink {
-            Circle()
+            FilterResultsView(viewModel: viewModel.filterResultsViewModel)
         } label: {
-            Text("filters_floating_button_title".localized().uppercased())
+            Text(Localization.filtersFloatingButtonTitle.localized().uppercased())
                 .font(.headline)
                 .fontWeight(.medium)
                 .foregroundStyle(
@@ -107,10 +106,11 @@ struct FiltersView<ViewModel: FiltersViewModeling>: View {
                     Color.lightGray :
                     Color.white
                 )
+                .frame(height: 45)
+                .frame(maxWidth: .infinity)
+                .contentShape(Rectangle())
         }
         .disabled(viewModel.isFloatingButtonDisabled)
-        .frame(maxWidth: .infinity)
-        .frame(height: 45)
         .background(
             viewModel.isFloatingButtonDisabled ?
             Color.appDisabled :

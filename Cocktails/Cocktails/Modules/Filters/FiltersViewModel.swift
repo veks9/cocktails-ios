@@ -13,6 +13,7 @@ protocol FiltersViewModeling: ObservableObject {
     var isResetButtonDisabled: Bool { get }
     var isFloatingButtonDisabled: Bool { get }
     var isLoading: Bool { get }
+    var filterResultsViewModel: FilterResultsViewModel { get }
     
     func onAlcoholicFilterViewTap(with id: String)
     func onCategoryFilterViewTap(with id: String)
@@ -21,12 +22,15 @@ protocol FiltersViewModeling: ObservableObject {
 }
 
 final class FiltersViewModel: FiltersViewModeling {
+    // MARK: - Private properties
     
     private let cocktailService: CocktailServicing
     
-    @Published private var selectedAlcoholicId: String?
-    @Published private var selectedCategoryId: String?
-    @Published private var selectedGlassId: String?
+    @Published private(set) var selectedAlcoholicId: String?
+    @Published private(set) var selectedCategoryId: String?
+    @Published private(set) var selectedGlassId: String?
+
+    // MARK: - Init
 
     init(cocktailService: CocktailServicing = CocktailService()) {
         self.cocktailService = cocktailService
@@ -40,6 +44,16 @@ final class FiltersViewModel: FiltersViewModeling {
     @Published private(set) var isResetButtonDisabled: Bool = true
     @Published private(set) var isFloatingButtonDisabled: Bool = true
     @Published private(set) var isLoading: Bool = true
+    
+    var filterResultsViewModel: FilterResultsViewModel {
+        FilterResultsViewModel(
+            context: FilterResultsContext(
+                selectedAlcoholicId: selectedAlcoholicId,
+                selectedCategoryId: selectedCategoryId,
+                selectedGlassId: selectedGlassId
+            )
+        )
+    }
     
     var selectedIds: AnyPublisher<(String?, String?, String?), Never> {
         Publishers.CombineLatest3(

@@ -12,6 +12,7 @@ struct CocktailsApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView(viewModel: HomeViewModel())
+                .preferredColorScheme(.light)
         }
     }
 }

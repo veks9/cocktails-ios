@@ -87,7 +87,7 @@ struct CocktailDetailsView<ViewModel: CocktailDetailsViewModeling>: View {
     var ingredientsAndMeasuresView: some View {
         if let ingredientsAndMeasures = viewModel.ingredientsAndMeasures {
             VStack(alignment: .leading, spacing: 10) {
-                Text("cocktail_details_ingredients_section_title".localized())
+                Text(Localization.cocktailDetailsIngredientsSectionTitle.localized())
                     .foregroundStyle(Color.black)
                     .font(.subheadline)
                     .fontWeight(.semibold)
@@ -106,7 +106,7 @@ struct CocktailDetailsView<ViewModel: CocktailDetailsViewModeling>: View {
     var directionsView: some View {
         if let directions = viewModel.directions {
             VStack(alignment: .leading, spacing: 10) {
-                Text("cocktail_details_directions_section_title".localized())
+                Text(Localization.cocktailDetailsDirectionsSectionTitle.localized())
                     .foregroundStyle(Color.black)
                     .font(.subheadline)
                     .fontWeight(.semibold)

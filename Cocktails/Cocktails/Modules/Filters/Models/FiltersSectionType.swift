@@ -15,11 +15,11 @@ enum FiltersSectionType {
     var title: String {
         switch self {
         case .alcoholic:
-            "filters_alcoholic_section_title".localized()
+            Localization.filtersAlcoholicSectionTitle.localized()
         case .glass:
-            "filters_glass_section_title".localized()
+            Localization.filtersGlassSectionTitle.localized()
         case .category:
-            "filters_category_section_title".localized()
+            Localization.filtersCategorySectionTitle.localized()
         }
     }
 }

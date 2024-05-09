@@ -148,7 +148,7 @@ final class CocktailDetailsViewModel: CocktailDetailsViewModeling {
     private func createLastModifiedAttributedString(from dateModified: Date?) -> AttributedString? {
         guard let dateModified else { return nil }
         let relativeDate = dateModified.toRelativeDate()
-        let localizedString = "cocktail_details_directions_last_modified_title".localized()
+        let localizedString = Localization.cocktailDetailsDirectionsLastModifiedTitle.localized()
         let combinedString = "\(localizedString) \(relativeDate)"
         let attributedString = NSMutableAttributedString(string: combinedString)
         

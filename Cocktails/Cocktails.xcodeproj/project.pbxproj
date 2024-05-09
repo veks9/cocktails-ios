@@ -67,6 +67,11 @@
 		719BEEE92BEB6F1D0075B264 /* GetGlassFiltersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEE82BEB6F1D0075B264 /* GetGlassFiltersRequest.swift */; };
 		719BEEEB2BEB79FF0075B264 /* Optional+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEEA2BEB79FF0075B264 /* Optional+.swift */; };
 		719BEEF12BECBBEC0075B264 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEF02BECBBEC0075B264 /* LoadingView.swift */; };
+		719BEEF82BED30530075B264 /* FilterCocktailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEF72BED30530075B264 /* FilterCocktailsRequest.swift */; };
+		719BEEFB2BED316C0075B264 /* FilterResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEFA2BED316C0075B264 /* FilterResultsView.swift */; };
+		719BEEFD2BED31740075B264 /* FilterResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEFC2BED31730075B264 /* FilterResultsViewModel.swift */; };
+		719BEEFF2BED33DC0075B264 /* FilterResultsContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEFE2BED33DC0075B264 /* FilterResultsContext.swift */; };
+		719BEF012BED3B5C0075B264 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEF002BED3B5C0075B264 /* Localization.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +152,12 @@
 		719BEEE82BEB6F1D0075B264 /* GetGlassFiltersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGlassFiltersRequest.swift; sourceTree = "<group>"; };
 		719BEEEA2BEB79FF0075B264 /* Optional+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+.swift"; sourceTree = "<group>"; };
 		719BEEF02BECBBEC0075B264 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		719BEEF62BED2AF10075B264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		719BEEF72BED30530075B264 /* FilterCocktailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCocktailsRequest.swift; sourceTree = "<group>"; };
+		719BEEFA2BED316C0075B264 /* FilterResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultsView.swift; sourceTree = "<group>"; };
+		719BEEFC2BED31730075B264 /* FilterResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultsViewModel.swift; sourceTree = "<group>"; };
+		719BEEFE2BED33DC0075B264 /* FilterResultsContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultsContext.swift; sourceTree = "<group>"; };
+		719BEF002BED3B5C0075B264 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +211,7 @@
 		719BEE392BE966B20075B264 /* Cocktails */ = {
 			isa = PBXGroup;
 			children = (
+				719BEEF62BED2AF10075B264 /* Info.plist */,
 				719BEE782BE97E460075B264 /* API */,
 				719BEE662BE967330075B264 /* Resources */,
 				719BEE652BE9672E0075B264 /* Common */,
@@ -237,6 +249,7 @@
 		719BEE642BE967280075B264 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				719BEEF92BED31630075B264 /* FilterResults */,
 				719BEECA2BEAD7BC0075B264 /* Filters */,
 				719BEEAB2BEA09330075B264 /* CocktailDetails */,
 				719BEE6C2BE967880075B264 /* Home */,
@@ -260,6 +273,7 @@
 				719BEE3E2BE966B40075B264 /* Assets.xcassets */,
 				719BEE6B2BE967640075B264 /* Localizable.strings */,
 				719BEEA92BE992DB0075B264 /* Assets.swift */,
+				719BEF002BED3B5C0075B264 /* Localization.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -342,6 +356,7 @@
 				719BEED32BEB5EEB0075B264 /* GetAlcoholicFiltersRequest.swift */,
 				719BEEE62BEB6F150075B264 /* GetCategoryFiltersRequest.swift */,
 				719BEEE82BEB6F1D0075B264 /* GetGlassFiltersRequest.swift */,
+				719BEEF72BED30530075B264 /* FilterCocktailsRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -491,6 +506,16 @@
 			path = LoadingView;
 			sourceTree = "<group>";
 		};
+		719BEEF92BED31630075B264 /* FilterResults */ = {
+			isa = PBXGroup;
+			children = (
+				719BEEFA2BED316C0075B264 /* FilterResultsView.swift */,
+				719BEEFC2BED31730075B264 /* FilterResultsViewModel.swift */,
+				719BEEFE2BED33DC0075B264 /* FilterResultsContext.swift */,
+			);
+			path = FilterResults;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -638,6 +663,7 @@
 				719BEEA52BE98D0C0075B264 /* Color+.swift in Sources */,
 				719BEE9D2BE9874F0075B264 /* URL+.swift in Sources */,
 				719BEE822BE97E9F0075B264 /* APIRequest.swift in Sources */,
+				719BEEFB2BED316C0075B264 /* FilterResultsView.swift in Sources */,
 				719BEE8A2BE980040075B264 /* NetworkConstants.swift in Sources */,
 				719BEEAD2BEA09430075B264 /* CocktailDetailsView.swift in Sources */,
 				719BEE982BE986890075B264 /* APIError.swift in Sources */,
@@ -658,7 +684,10 @@
 				719BEEC52BEA4E0E0075B264 /* String+.swift in Sources */,
 				719BEEA82BE9925A0075B264 /* SearchBarView.swift in Sources */,
 				719BEEBE2BEA16690075B264 /* GetCocktailDetailsRequest.swift in Sources */,
+				719BEEFF2BED33DC0075B264 /* FilterResultsContext.swift in Sources */,
 				719BEE8E2BE9820B0075B264 /* Response.swift in Sources */,
+				719BEEF82BED30530075B264 /* FilterCocktailsRequest.swift in Sources */,
+				719BEF012BED3B5C0075B264 /* Localization.swift in Sources */,
 				719BEEB12BEA097A0075B264 /* CocktailDetailsContext.swift in Sources */,
 				719BEEAF2BEA094A0075B264 /* CocktailDetailsViewModel.swift in Sources */,
 				719BEED02BEB59640075B264 /* FiltersViewModel.swift in Sources */,
@@ -671,6 +700,7 @@
 				719BEEDB2BEB62020075B264 /* FiltersSection.swift in Sources */,
 				719BEE842BE97FD40075B264 /* AuthenticationType.swift in Sources */,
 				719BEEF12BECBBEC0075B264 /* LoadingView.swift in Sources */,
+				719BEEFD2BED31740075B264 /* FilterResultsViewModel.swift in Sources */,
 				719BEE952BE9846B0075B264 /* SearchCocktailsRequest.swift in Sources */,
 				719BEE3B2BE966B20075B264 /* CocktailsApp.swift in Sources */,
 				719BEEB52BEA0BBD0075B264 /* DateFormatter+.swift in Sources */,
@@ -860,9 +890,9 @@
 				DEVELOPMENT_TEAM = D2X79FY398;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Cocktails/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -889,9 +919,9 @@
 				DEVELOPMENT_TEAM = D2X79FY398;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Cocktails/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -9,10 +9,10 @@
 // MARK: - Common
 "relative_date_year_ago" = "%d year ago";
 "relative_date_years_ago" = "%d years ago";
+"relative_date_this_year" = "This year";
 "relative_date_this_month" = "This month";
 "relative_date_this_week" = "This week";
 "relative_date_today" = "Today";
-"relative_date_unknown" = "Unknown";
 "search_bar_placeholder" = "Type to search";
 "search_bar_focused_placeholder" = "Search";
 "loading_view_title" = "Something yummy is on your way!";
@@ -32,3 +32,6 @@
 "filters_navigation_title" = "Filters";
 "filters_trailing_button_title" = "Reset";
 "filters_floating_button_title" = "Search";
+
+// MARK: - Filter Results
+"filter_results_navigation_title" = "Number of results: %d";

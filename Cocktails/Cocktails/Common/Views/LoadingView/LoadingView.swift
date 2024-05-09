@@ -13,7 +13,7 @@ struct LoadingView: View {
             Color.appPrimary
                 .ignoresSafeArea(.all)
             VStack(spacing: 30) {
-                Text("loading_view_title".localized())
+                Text(Localization.loadingViewTitle.localized())
                     .foregroundStyle(Color.white)
                     .font(.title3)
                     .fontWeight(.bold)

@@ -36,8 +36,8 @@ struct SearchBarView: View {
     var placeholderView: Text {
         Text(
             isFocused ?
-            "search_bar_focused_placeholder".localized() :
-            "search_bar_placeholder".localized()
+            Localization.searchBarFocusedPlaceholder.localized() :
+                Localization.searchBarPlaceholder.localized()
         )
             .foregroundColor(.gray)
     }
