@@ -13,7 +13,7 @@ struct CocktailsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack(path: $router.navPath) {
+            NavigationStack(path: $router.navigationPath) {
                 HomeView(viewModel: HomeViewModel())
                     .navigationDestination(for: Router.Destination.self) { destination in
                         switch destination {

@@ -16,7 +16,6 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
         if viewModel.isLoading {
             LoadingView()
         } else {
-            
             ZStack {
                 VStack(spacing: 0) {
                     topView
@@ -28,6 +27,7 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
                         .padding()
                 }
             }
+            .toolbar(.hidden, for: .navigationBar)
         }
     }
     
