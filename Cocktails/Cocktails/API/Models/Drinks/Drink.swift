@@ -8,7 +8,7 @@
 import Foundation
 
 extension Model {
-    struct Drink: Decodable, Hashable {
+    struct Drink: Decodable {
         let id: String
         let name: String
         let category: String?
@@ -47,6 +47,86 @@ extension Model {
         private let measure14: String?
         private let measure15: String?
         let dateModified: Date?
+        
+        init(
+            id: String,
+            name: String,
+            category: String? = nil,
+            alcoholic: String? = nil,
+            glass: String? = nil,
+            instructions: String? = nil,
+            thumbnailUrl: URL? = nil,
+            ingredient1: String? = nil,
+            ingredient2: String? = nil,
+            ingredient3: String? = nil,
+            ingredient4: String? = nil,
+            ingredient5: String? = nil,
+            ingredient6: String? = nil,
+            ingredient7: String? = nil,
+            ingredient8: String? = nil,
+            ingredient9: String? = nil,
+            ingredient10: String? = nil,
+            ingredient11: String? = nil,
+            ingredient12: String? = nil,
+            ingredient13: String? = nil,
+            ingredient14: String? = nil,
+            ingredient15: String? = nil,
+            measure1: String? = nil,
+            measure2: String? = nil,
+            measure3: String? = nil,
+            measure4: String? = nil,
+            measure5: String? = nil,
+            measure6: String? = nil,
+            measure7: String? = nil,
+            measure8: String? = nil,
+            measure9: String? = nil,
+            measure10: String? = nil,
+            measure11: String? = nil,
+            measure12: String? = nil,
+            measure13: String? = nil,
+            measure14: String? = nil,
+            measure15: String? = nil,
+            dateModified: Date? = nil
+        ) {
+            self.id = id
+            self.name = name
+            self.category = category
+            self.alcoholic = alcoholic
+            self.glass = glass
+            self.instructions = instructions
+            self.thumbnailUrl = thumbnailUrl
+            self.ingredient1 = ingredient1
+            self.ingredient2 = ingredient2
+            self.ingredient3 = ingredient3
+            self.ingredient4 = ingredient4
+            self.ingredient5 = ingredient5
+            self.ingredient6 = ingredient6
+            self.ingredient7 = ingredient7
+            self.ingredient8 = ingredient8
+            self.ingredient9 = ingredient9
+            self.ingredient10 = ingredient10
+            self.ingredient11 = ingredient11
+            self.ingredient12 = ingredient12
+            self.ingredient13 = ingredient13
+            self.ingredient14 = ingredient14
+            self.ingredient15 = ingredient15
+            self.measure1 = measure1
+            self.measure2 = measure2
+            self.measure3 = measure3
+            self.measure4 = measure4
+            self.measure5 = measure5
+            self.measure6 = measure6
+            self.measure7 = measure7
+            self.measure8 = measure8
+            self.measure9 = measure9
+            self.measure10 = measure10
+            self.measure11 = measure11
+            self.measure12 = measure12
+            self.measure13 = measure13
+            self.measure14 = measure14
+            self.measure15 = measure15
+            self.dateModified = dateModified
+        }
         
         enum CodingKeys: String, CodingKey {
             case id = "idDrink"

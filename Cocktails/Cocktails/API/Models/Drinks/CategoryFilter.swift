@@ -8,7 +8,7 @@
 import Foundation
 
 extension Model {
-    struct CategoryFilter: Decodable, Hashable {
+    struct CategoryFilter: Decodable {
         let name: String
         
         enum CodingKeys: String, CodingKey {

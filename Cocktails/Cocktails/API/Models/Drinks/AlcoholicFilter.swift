@@ -8,7 +8,7 @@
 import Foundation
 
 extension Model {
-    struct AlcoholicFilter: Decodable, Hashable {
+    struct AlcoholicFilter: Decodable {
         let name: String
         
         enum CodingKeys: String, CodingKey {
