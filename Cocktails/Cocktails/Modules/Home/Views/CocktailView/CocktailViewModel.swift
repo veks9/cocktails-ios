@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class CocktailViewModel {
+final class CocktailViewModel: Identifiable {
     let id: String
     let title: String
     let subtitle: String?

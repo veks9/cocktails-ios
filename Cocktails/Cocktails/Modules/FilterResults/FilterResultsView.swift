@@ -15,8 +15,7 @@ struct FilterResultsView<ViewModel: FilterResultsViewModeling>: View {
         if viewModel.isLoading {
             LoadingView()
         } else {
-            cocktailsList
-                .background(Color.backgroundPrimary)
+            CocktailsListView(cocktailViewModels: viewModel.cocktailViewModels)
                 .toolbar(.visible, for: .navigationBar)
                 .navigationBarItems(leading: leadingNavigationBarItem)
                 .toolbar {
@@ -36,35 +35,5 @@ struct FilterResultsView<ViewModel: FilterResultsViewModeling>: View {
             Assets.back.image
         })
         .frame(width: 40, height: 40)
-    }
-    
-    var cocktailsList: some View {
-        List(content: {
-            ForEach(viewModel.cocktailViewModels, id: \.id) { cocktailViewModel in
-                ZStack {
-                    CocktailView(viewModel: cocktailViewModel)
-                        .onTapGesture {
-                            router.navigate(
-                                to: .cocktailDetails(
-                                    viewModel: CocktailDetailsViewModel(
-                                        context: CocktailDetailsContext(
-                                            fetchType: .id(cocktailViewModel.id)
-                                        )
-                                    )
-                                )
-                            )
-                        }
-                }
-                .listRowInsets(EdgeInsets())
-                .listRowBackground(Color.backgroundPrimary)
-            }
-            Spacer()
-                .listRowInsets(EdgeInsets())
-                .listRowBackground(Color.backgroundPrimary)
-                .listRowSeparator(.hidden)
-                .frame(height: 70)
-        })
-        .listStyle(.plain)
-        .background(Color.backgroundPrimary)
     }
 }

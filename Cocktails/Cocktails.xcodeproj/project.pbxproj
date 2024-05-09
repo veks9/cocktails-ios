@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		715D93822BED7099003DAA54 /* CocktailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D93812BED7099003DAA54 /* CocktailsListView.swift */; };
 		719BEE3B2BE966B20075B264 /* CocktailsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE3A2BE966B20075B264 /* CocktailsApp.swift */; };
 		719BEE3D2BE966B20075B264 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEE3C2BE966B20075B264 /* HomeView.swift */; };
 		719BEE3F2BE966B40075B264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 719BEE3E2BE966B40075B264 /* Assets.xcassets */; };
@@ -93,6 +94,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		715D93812BED7099003DAA54 /* CocktailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsListView.swift; sourceTree = "<group>"; };
 		719BEE372BE966B20075B264 /* Cocktails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocktails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		719BEE3A2BE966B20075B264 /* CocktailsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsApp.swift; sourceTree = "<group>"; };
 		719BEE3C2BE966B20075B264 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -190,6 +192,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		715D93802BED708D003DAA54 /* CocktailsListView */ = {
+			isa = PBXGroup;
+			children = (
+				715D93812BED7099003DAA54 /* CocktailsListView.swift */,
+			);
+			path = CocktailsListView;
+			sourceTree = "<group>";
+		};
 		719BEE2E2BE966B20075B264 = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +506,7 @@
 		719BEEEC2BECBBD10075B264 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				715D93802BED708D003DAA54 /* CocktailsListView */,
 				719BEEED2BECBBD90075B264 /* LoadingView */,
 			);
 			path = Views;
@@ -682,6 +693,7 @@
 				719BEEE72BEB6F150075B264 /* GetCategoryFiltersRequest.swift in Sources */,
 				719BEEB92BEA0DE40075B264 /* String+Localization.swift in Sources */,
 				719BEED92BEB61FE0075B264 /* FiltersSectionType.swift in Sources */,
+				715D93822BED7099003DAA54 /* CocktailsListView.swift in Sources */,
 				719BEE8C2BE981FF0075B264 /* Model.swift in Sources */,
 				719BEEE12BEB62490075B264 /* FilterView.swift in Sources */,
 				719BEEEB2BEB79FF0075B264 /* Optional+.swift in Sources */,

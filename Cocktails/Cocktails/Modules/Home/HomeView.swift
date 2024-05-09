@@ -18,15 +18,19 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
         } else {
             GeometryReader { geometry in
                 ZStack {
-                    cocktailsList
-                        .padding(.top, geometry.safeAreaInsets.top)
-                    VStack {
+                    CocktailsListView(cocktailViewModels: viewModel.cocktailViewModels)
+                        .scrollDismissesKeyboard(.interactively)
+                        .padding(.top, geometry.safeAreaInsets.top + 50)
+                    VStack(spacing: 0) {
+                        Color.appPrimary
+                            .frame(height: geometry.safeAreaInsets.top)
                         topView
                         Spacer()
                         floatingButton
-                            .padding()
+                            .padding(.bottom, geometry.safeAreaInsets.bottom + 20)
                     }
                 }
+                .ignoresSafeArea(.all)
                 .background(Color.backgroundPrimary)
                 .toolbar(.hidden, for: .navigationBar)
             }
@@ -66,38 +70,6 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
         .background(Color.appPrimary)
         .compositingGroup()
         .shadow(radius: 10)
-    }
-    
-    var cocktailsList: some View {
-        List(
-            content: {
-                ForEach(viewModel.cocktailViewModels, id: \.id) { cocktailViewModel in
-                    ZStack {
-                        CocktailView(viewModel: cocktailViewModel)
-                            .onTapGesture {
-                                router.navigate(
-                                    to: .cocktailDetails(
-                                        viewModel: CocktailDetailsViewModel(
-                                            context: CocktailDetailsContext(
-                                                fetchType: .id(cocktailViewModel.id)
-                                            )
-                                        )
-                                    )
-                                )
-                            }
-                    }
-                    .listRowInsets(EdgeInsets())
-                    .listRowBackground(Color.backgroundPrimary)
-                }
-                Spacer()
-                    .listRowInsets(EdgeInsets())
-                    .listRowBackground(Color.backgroundPrimary)
-                    .listRowSeparator(.hidden)
-                    .frame(height: 70)
-            })
-        .scrollDismissesKeyboard(.interactively)
-        .listStyle(.plain)
-        .background(Color.backgroundPrimary)
     }
     
     var floatingButton: some View {
