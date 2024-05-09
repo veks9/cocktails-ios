@@ -13,10 +13,21 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
     @State var isFilterButtonShown: Bool = true
     
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 0) {
-                topView
-                cocktailsList
+        if viewModel.isLoading {
+            LoadingView()
+        } else {
+            NavigationStack {
+                ZStack {
+                    VStack(spacing: 0) {
+                        topView
+                        cocktailsList
+                    }
+                    VStack {
+                        Spacer()
+                        floatingButton
+                            .padding()
+                    }
+                }
             }
         }
     }
@@ -71,11 +82,12 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
                 .listRowInsets(EdgeInsets())
                 .listRowBackground(Color.backgroundPrimary)
             }
+            Spacer()
+                .listRowInsets(EdgeInsets())
+                .listRowBackground(Color.backgroundPrimary)
+                .listRowSeparator(.hidden)
+                .frame(height: 70)
         })
-        .safeAreaInset(edge: .bottom) {
-            floatingButton
-                .padding()
-        }
         .scrollDismissesKeyboard(.interactively)
         .listStyle(.plain)
         .background(Color.backgroundPrimary)

@@ -12,6 +12,7 @@ protocol FiltersViewModeling: ObservableObject {
     var dataSource: [FiltersSection] { get }
     var isResetButtonDisabled: Bool { get }
     var isFloatingButtonDisabled: Bool { get }
+    var isLoading: Bool { get }
     
     func onAlcoholicFilterViewTap(with id: String)
     func onCategoryFilterViewTap(with id: String)
@@ -38,6 +39,7 @@ final class FiltersViewModel: FiltersViewModeling {
     @Published private(set) var dataSource: [FiltersSection] = []
     @Published private(set) var isResetButtonDisabled: Bool = true
     @Published private(set) var isFloatingButtonDisabled: Bool = true
+    @Published private(set) var isLoading: Bool = true
     
     var selectedIds: AnyPublisher<(String?, String?, String?), Never> {
         Publishers.CombineLatest3(
@@ -81,6 +83,9 @@ final class FiltersViewModel: FiltersViewModeling {
             
             return [alcoholicSection, categoriesSection, glassesSection]
         }
+        .handleEvents(receiveOutput: { [weak self] _ in
+            self?.isLoading = false
+        })
         .assign(to: &$dataSource)
     }
     

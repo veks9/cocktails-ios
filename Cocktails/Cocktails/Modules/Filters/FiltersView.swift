@@ -12,24 +12,28 @@ struct FiltersView<ViewModel: FiltersViewModeling>: View {
     @StateObject var viewModel: ViewModel
     
     var body: some View {
-        filtersList
-            .background(Color.backgroundPrimary)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarBackground(Color.appPrimary, for: .navigationBar)
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: leadingNavigationBarItem)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("filters_navigation_title".localized())
-                        .foregroundColor(.white)
-                        .fontWeight(.semibold)
+        if viewModel.isLoading {
+            LoadingView()
+        } else {
+            filtersList
+                .background(Color.backgroundPrimary)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbarBackground(.visible, for: .navigationBar)
+                .toolbarBackground(Color.appPrimary, for: .navigationBar)
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(leading: leadingNavigationBarItem)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("filters_navigation_title".localized())
+                            .foregroundColor(.white)
+                            .fontWeight(.semibold)
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        trailingToolbarItem
+                    }
                 }
-                ToolbarItem(placement: .topBarTrailing) {
-                    trailingToolbarItem
-                }
-            }
-            .preferredColorScheme(.light)
+                .preferredColorScheme(.light)
+        }
     }
     
     var leadingNavigationBarItem: some View {
@@ -103,9 +107,10 @@ struct FiltersView<ViewModel: FiltersViewModeling>: View {
                     Color.lightGray :
                     Color.white
                 )
-                .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
         }
         .disabled(viewModel.isFloatingButtonDisabled)
+        .frame(maxWidth: .infinity)
+        .frame(height: 45)
         .background(
             viewModel.isFloatingButtonDisabled ?
             Color.appDisabled :

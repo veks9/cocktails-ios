@@ -66,6 +66,7 @@
 		719BEEE72BEB6F150075B264 /* GetCategoryFiltersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEE62BEB6F150075B264 /* GetCategoryFiltersRequest.swift */; };
 		719BEEE92BEB6F1D0075B264 /* GetGlassFiltersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEE82BEB6F1D0075B264 /* GetGlassFiltersRequest.swift */; };
 		719BEEEB2BEB79FF0075B264 /* Optional+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEEA2BEB79FF0075B264 /* Optional+.swift */; };
+		719BEEF12BECBBEC0075B264 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEF02BECBBEC0075B264 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,7 @@
 		719BEEE62BEB6F150075B264 /* GetCategoryFiltersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoryFiltersRequest.swift; sourceTree = "<group>"; };
 		719BEEE82BEB6F1D0075B264 /* GetGlassFiltersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGlassFiltersRequest.swift; sourceTree = "<group>"; };
 		719BEEEA2BEB79FF0075B264 /* Optional+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+.swift"; sourceTree = "<group>"; };
+		719BEEF02BECBBEC0075B264 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 		719BEE652BE9672E0075B264 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				719BEEEC2BECBBD10075B264 /* Views */,
 				719BEE9A2BE987380075B264 /* Extensions */,
 			);
 			path = Common;
@@ -472,6 +475,22 @@
 			path = FilterView;
 			sourceTree = "<group>";
 		};
+		719BEEEC2BECBBD10075B264 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				719BEEED2BECBBD90075B264 /* LoadingView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		719BEEED2BECBBD90075B264 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				719BEEF02BECBBEC0075B264 /* LoadingView.swift */,
+			);
+			path = LoadingView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -651,6 +670,7 @@
 				719BEEE92BEB6F1D0075B264 /* GetGlassFiltersRequest.swift in Sources */,
 				719BEEDB2BEB62020075B264 /* FiltersSection.swift in Sources */,
 				719BEE842BE97FD40075B264 /* AuthenticationType.swift in Sources */,
+				719BEEF12BECBBEC0075B264 /* LoadingView.swift in Sources */,
 				719BEE952BE9846B0075B264 /* SearchCocktailsRequest.swift in Sources */,
 				719BEE3B2BE966B20075B264 /* CocktailsApp.swift in Sources */,
 				719BEEB52BEA0BBD0075B264 /* DateFormatter+.swift in Sources */,

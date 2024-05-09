@@ -15,6 +15,7 @@
 "relative_date_unknown" = "Unknown";
 "search_bar_placeholder" = "Type to search";
 "search_bar_focused_placeholder" = "Search";
+"loading_view_title" = "Something yummy is on your way!";
 
 // MARK: - Home
 "home_floating_button_title" = "Feeling lucky";

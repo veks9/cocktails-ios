@@ -12,6 +12,7 @@ import CombineExt
 protocol HomeViewModeling: ObservableObject {
     var cocktailViewModels: [CocktailViewModel] { get }
     var searchText: String { get set }
+    var isLoading: Bool { get }
     
     func onSearchBarFocusChange(_ focus: Bool)
 }
@@ -23,11 +24,6 @@ final class HomeViewModel: HomeViewModeling {
     private let cocktailService: CocktailServicing
     private let isSearchFocusedSubject = CurrentValueSubject<Bool, Never>(false)
     
-    // MARK: - Internal properties
-    
-    @Published private(set) var cocktailViewModels: [CocktailViewModel] = []
-    @Published var searchText: String = ""
-    
     // MARK: - Init
     
     init(
@@ -37,6 +33,12 @@ final class HomeViewModel: HomeViewModeling {
         
         observe()
     }
+    
+    // MARK: - Internal properties
+    
+    @Published private(set) var cocktailViewModels: [CocktailViewModel] = []
+    @Published var searchText: String = ""
+    @Published private(set) var isLoading: Bool = true
     
     // MARK: - Private functions
     
@@ -65,6 +67,9 @@ final class HomeViewModel: HomeViewModeling {
                     .eraseToAnyPublisher()
             }
         }
+        .handleEvents(receiveOutput: { [weak self] _ in
+            self?.isLoading = false
+        })
         .assign(to: &$cocktailViewModels)
     }
 }

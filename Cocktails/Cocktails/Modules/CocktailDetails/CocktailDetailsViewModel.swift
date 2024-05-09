@@ -17,6 +17,7 @@ protocol CocktailDetailsViewModeling: ObservableObject {
     var directions: String? { get }
     var lastModifiedFormatted: AttributedString? { get }
     var ingredientsAndMeasures: String? { get }
+    var isLoading: Bool { get }
 }
 
 final class CocktailDetailsViewModel: CocktailDetailsViewModeling {
@@ -52,6 +53,9 @@ final class CocktailDetailsViewModel: CocktailDetailsViewModeling {
         return publisher
             .ignoreFailure()
             .compactMap({ $0 })
+            .handleEvents(receiveOutput: { [weak self] _ in
+                self?.isLoading = false
+            })
             .share(replay: 1)
             .eraseToAnyPublisher()
     }()
@@ -66,6 +70,7 @@ final class CocktailDetailsViewModel: CocktailDetailsViewModeling {
     @Published private(set) var directions: String?
     @Published private(set) var lastModifiedFormatted: AttributedString?
     @Published private(set) var ingredientsAndMeasures: String?
+    @Published private(set) var isLoading: Bool = true
     
     // MARK: - Private functions
     

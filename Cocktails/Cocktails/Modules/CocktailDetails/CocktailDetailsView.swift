@@ -11,48 +11,34 @@ import Kingfisher
 struct CocktailDetailsView<ViewModel: CocktailDetailsViewModeling>: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: ViewModel
+    private let imageHeight: CGFloat = 300
     
     var body: some View {
-        ScrollView {
-            ZStack {
-                VStack {
-                    image
-                    Spacer()
-                }
-                VStack {
-                    Spacer()
-                        .frame(height: 265)
-                    VStack(spacing: 15) {
-                        topIconsView
-                        ingredientsAndMeasuresView
-                        directionsView
-                        lastModifiedView
+        if viewModel.isLoading {
+            LoadingView()
+        } else {
+            ScrollView {
+                ZStack {
+                    VStack {
+                        image
+                        Spacer()
                     }
-                    .background(Color.backgroundPrimary)
-                    .clipShape(
-                        .rect(
-                            topLeadingRadius: 30,
-                            bottomLeadingRadius: 0,
-                            bottomTrailingRadius: 0,
-                            topTrailingRadius: 30,
-                            style: .continuous
-                        )
-                    )
+                    mainView
                 }
             }
-        }
-        .background(Color.backgroundPrimary)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarBackground(Color.appPrimary, for: .navigationBar)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: leadingNavigationBarItem)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text(viewModel.navigationTitle)
-                    .foregroundStyle(Color.white)
-                    .foregroundColor(.white)
-                    .fontWeight(.semibold)
+            .background(Color.backgroundPrimary)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarBackground(Color.appPrimary, for: .navigationBar)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: leadingNavigationBarItem)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(viewModel.navigationTitle)
+                        .foregroundStyle(Color.white)
+                        .foregroundColor(.white)
+                        .fontWeight(.semibold)
+                }
             }
         }
     }
@@ -69,7 +55,7 @@ struct CocktailDetailsView<ViewModel: CocktailDetailsViewModeling>: View {
         KFImage(viewModel.thumbnailUrl)
             .resizable()
             .aspectRatio(contentMode: .fill)
-            .frame(height: 300)
+            .frame(height: imageHeight)
             .clipped()
     }
     
@@ -143,6 +129,29 @@ struct CocktailDetailsView<ViewModel: CocktailDetailsViewModeling>: View {
                 .lineLimit(nil)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
+        }
+    }
+    
+    var mainView: some View {
+        VStack {
+            Spacer()
+                .frame(height: imageHeight - 35)
+            VStack(spacing: 15) {
+                topIconsView
+                ingredientsAndMeasuresView
+                directionsView
+                lastModifiedView
+            }
+            .background(Color.backgroundPrimary)
+            .clipShape(
+                .rect(
+                    topLeadingRadius: 30,
+                    bottomLeadingRadius: 0,
+                    bottomTrailingRadius: 0,
+                    topTrailingRadius: 30,
+                    style: .continuous
+                )
+            )
         }
     }
 }
