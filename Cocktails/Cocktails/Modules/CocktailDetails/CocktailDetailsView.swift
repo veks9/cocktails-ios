@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct CocktailDetailsView<ViewModel: CocktailDetailsViewModeling>: View {
-    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var router: Router
     @StateObject var viewModel: ViewModel
     private let imageHeight: CGFloat = 300
     
@@ -27,10 +27,7 @@ struct CocktailDetailsView<ViewModel: CocktailDetailsViewModeling>: View {
                 }
             }
             .background(Color.backgroundPrimary)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarBackground(Color.appPrimary, for: .navigationBar)
-            .navigationBarBackButtonHidden(true)
+            .toolbar(.visible, for: .navigationBar)
             .navigationBarItems(leading: leadingNavigationBarItem)
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -44,15 +41,17 @@ struct CocktailDetailsView<ViewModel: CocktailDetailsViewModeling>: View {
     }
     
     var leadingNavigationBarItem: some View {
-        Assets.back.image?
-            .onTapGesture {
-                presentationMode.wrappedValue.dismiss()
-            }
-            .frame(width: 40, height: 40)
+        Button(action: {
+            router.navigateBack()
+        }, label: {
+            Assets.back.image
+        })
+        .frame(width: 40, height: 40)
     }
     
     var image: some View {
         KFImage(viewModel.thumbnailUrl)
+            .placeholder { Assets.cocktail.image }
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(height: imageHeight)

@@ -72,6 +72,7 @@
 		719BEEFD2BED31740075B264 /* FilterResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEFC2BED31730075B264 /* FilterResultsViewModel.swift */; };
 		719BEEFF2BED33DC0075B264 /* FilterResultsContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEEFE2BED33DC0075B264 /* FilterResultsContext.swift */; };
 		719BEF012BED3B5C0075B264 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEF002BED3B5C0075B264 /* Localization.swift */; };
+		719BEF042BED59300075B264 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719BEF032BED59300075B264 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +159,7 @@
 		719BEEFC2BED31730075B264 /* FilterResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultsViewModel.swift; sourceTree = "<group>"; };
 		719BEEFE2BED33DC0075B264 /* FilterResultsContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultsContext.swift; sourceTree = "<group>"; };
 		719BEF002BED3B5C0075B264 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		719BEF032BED59300075B264 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +262,7 @@
 		719BEE652BE9672E0075B264 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				719BEF022BED59210075B264 /* Router */,
 				719BEEEC2BECBBD10075B264 /* Views */,
 				719BEE9A2BE987380075B264 /* Extensions */,
 			);
@@ -516,6 +519,14 @@
 			path = FilterResults;
 			sourceTree = "<group>";
 		};
+		719BEF022BED59210075B264 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				719BEF032BED59300075B264 /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -682,6 +693,7 @@
 				719BEEE52BEB6E830075B264 /* GlassFilter.swift in Sources */,
 				719BEE882BE97FF90075B264 /* Endpoint.swift in Sources */,
 				719BEEC52BEA4E0E0075B264 /* String+.swift in Sources */,
+				719BEF042BED59300075B264 /* Router.swift in Sources */,
 				719BEEA82BE9925A0075B264 /* SearchBarView.swift in Sources */,
 				719BEEBE2BEA16690075B264 /* GetCocktailDetailsRequest.swift in Sources */,
 				719BEEFF2BED33DC0075B264 /* FilterResultsContext.swift in Sources */,

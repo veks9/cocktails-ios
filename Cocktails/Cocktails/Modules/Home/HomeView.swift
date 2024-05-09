@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView<ViewModel: HomeViewModeling>: View {
+    @EnvironmentObject var router: Router
     @StateObject var viewModel: ViewModel
     @FocusState var isSearchBarFocused: Bool
     
@@ -15,17 +16,16 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
         if viewModel.isLoading {
             LoadingView()
         } else {
-            NavigationStack {
-                ZStack {
-                    VStack(spacing: 0) {
-                        topView
-                        cocktailsList
-                    }
-                    VStack {
-                        Spacer()
-                        floatingButton
-                            .padding()
-                    }
+            
+            ZStack {
+                VStack(spacing: 0) {
+                    topView
+                    cocktailsList
+                }
+                VStack {
+                    Spacer()
+                    floatingButton
+                        .padding()
                 }
             }
         }
@@ -42,13 +42,13 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
     }
     
     var filterIconView: some View {
-        NavigationLink {
-            FiltersView(viewModel: FiltersViewModel())
-        } label: {
+        Button(action: {
+            router.navigate(to: .filters(viewModel: FiltersViewModel()))
+        }, label: {
             Assets.filter.image?
                 .resizable()
                 .frame(width: 20, height: 20)
-        }
+        })
     }
     
     var topView: some View {
@@ -61,9 +61,9 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
             }
         }
         .padding(.all, 10)
-        .background(Color.appPrimary)
-        // TODO: - not correct
-        .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
+        .background(
+            Color.appPrimary
+        )
     }
     
     var cocktailsList: some View {
@@ -72,10 +72,17 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
                 ForEach(viewModel.cocktailViewModels, id: \.id) { cocktailViewModel in
                     ZStack {
                         CocktailView(viewModel: cocktailViewModel)
-                        NavigationLink(destination: getCocktailDetailsView(for: cocktailViewModel.id)) {
-                            EmptyView()
-                        }
-                        .opacity(0.0)
+                            .onTapGesture {
+                                router.navigate(
+                                    to: .cocktailDetails(
+                                        viewModel: CocktailDetailsViewModel(
+                                            context: CocktailDetailsContext(
+                                                fetchType: .id(cocktailViewModel.id)
+                                            )
+                                        )
+                                    )
+                                )
+                            }
                     }
                     .listRowInsets(EdgeInsets())
                     .listRowBackground(Color.backgroundPrimary)
@@ -92,39 +99,26 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
     }
     
     var floatingButton: some View {
-        NavigationLink {
-            getCocktailDetailsView()
-        } label: {
+        Button(action: {
+            router.navigate(
+                to: .cocktailDetails(
+                    viewModel: CocktailDetailsViewModel(
+                        context: CocktailDetailsContext(
+                            fetchType: .random
+                        )
+                    )
+                )
+            )
+        }, label: {
             Text(Localization.homeFloatingButtonTitle.localized().uppercased())
                 .font(.headline)
                 .fontWeight(.medium)
                 .foregroundStyle(Color.white)
                 .frame(height: 45)
                 .padding(.horizontal, 40)
-                .contentShape(Rectangle())
-        }
+        })
         .background(Color.appPrimary)
         .clipShape(RoundedRectangle(cornerRadius: 22.5))
-    }
-    
-    func getCocktailDetailsView(for id: String) -> some View {
-        CocktailDetailsView(
-            viewModel: CocktailDetailsViewModel(
-                context: CocktailDetailsContext(
-                    fetchType: .id(id)
-                )
-            )
-        )
-    }
-    
-    func getCocktailDetailsView() -> some View {
-        CocktailDetailsView(
-            viewModel: CocktailDetailsViewModel(
-                context: CocktailDetailsContext(
-                    fetchType: .random
-                )
-            )
-        )
     }
 }
 

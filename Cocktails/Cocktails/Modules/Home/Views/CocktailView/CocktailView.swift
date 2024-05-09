@@ -14,6 +14,7 @@ struct CocktailView: View {
     var body: some View {
         HStack(spacing: 8, content: {
             KFImage(viewModel.imageUrl)
+                .placeholder { Assets.cocktail.image?.resizable() }
                 .resizable()
                 .frame(width: 70, height: 80)
                 .aspectRatio(contentMode: .fill)
@@ -37,6 +38,7 @@ struct CocktailView: View {
             Spacer()
         })
         .padding()
+        .contentShape(Rectangle())
     }
 }
 

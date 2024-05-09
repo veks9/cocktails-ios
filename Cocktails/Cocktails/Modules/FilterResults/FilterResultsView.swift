@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FilterResultsView<ViewModel: FilterResultsViewModeling>: View {
-    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var router: Router
     @StateObject var viewModel: ViewModel
     
     var body: some View {
@@ -17,10 +17,7 @@ struct FilterResultsView<ViewModel: FilterResultsViewModeling>: View {
         } else {
             cocktailsList
                 .background(Color.backgroundPrimary)
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbarBackground(.visible, for: .navigationBar)
-                .toolbarBackground(Color.appPrimary, for: .navigationBar)
-                .navigationBarBackButtonHidden(true)
+                .toolbar(.visible, for: .navigationBar)
                 .navigationBarItems(leading: leadingNavigationBarItem)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
@@ -33,11 +30,12 @@ struct FilterResultsView<ViewModel: FilterResultsViewModeling>: View {
     }
     
     var leadingNavigationBarItem: some View {
-        Assets.back.image?
-            .onTapGesture {
-                presentationMode.wrappedValue.dismiss()
-            }
-            .frame(width: 40, height: 40)
+        Button(action: {
+            router.navigateToRoot()
+        }, label: {
+            Assets.back.image
+        })
+        .frame(width: 40, height: 40)
     }
     
     var cocktailsList: some View {
@@ -45,10 +43,17 @@ struct FilterResultsView<ViewModel: FilterResultsViewModeling>: View {
             ForEach(viewModel.cocktailViewModels, id: \.id) { cocktailViewModel in
                 ZStack {
                     CocktailView(viewModel: cocktailViewModel)
-                    NavigationLink(destination: getCocktailDetailsView(for: cocktailViewModel.id)) {
-                        EmptyView()
-                    }
-                    .opacity(0.0)
+                        .onTapGesture {
+                            router.navigate(
+                                to: .cocktailDetails(
+                                    viewModel: CocktailDetailsViewModel(
+                                        context: CocktailDetailsContext(
+                                            fetchType: .id(cocktailViewModel.id)
+                                        )
+                                    )
+                                )
+                            )
+                        }
                 }
                 .listRowInsets(EdgeInsets())
                 .listRowBackground(Color.backgroundPrimary)
@@ -61,15 +66,5 @@ struct FilterResultsView<ViewModel: FilterResultsViewModeling>: View {
         })
         .listStyle(.plain)
         .background(Color.backgroundPrimary)
-    }
-    
-    func getCocktailDetailsView(for id: String) -> some View {
-        CocktailDetailsView(
-            viewModel: CocktailDetailsViewModel(
-                context: CocktailDetailsContext(
-                    fetchType: .id(id)
-                )
-            )
-        )
     }
 }

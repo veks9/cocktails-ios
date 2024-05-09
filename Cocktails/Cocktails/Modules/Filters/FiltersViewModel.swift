@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-protocol FiltersViewModeling: ObservableObject {
+protocol FiltersViewModeling: ObservableObject, Hashable, Identifiable {
     var dataSource: [FiltersSection] { get }
     var isResetButtonDisabled: Bool { get }
     var isFloatingButtonDisabled: Bool { get }
@@ -22,6 +22,7 @@ protocol FiltersViewModeling: ObservableObject {
 }
 
 final class FiltersViewModel: FiltersViewModeling {
+    
     // MARK: - Private properties
     
     private let cocktailService: CocktailServicing
@@ -183,5 +184,25 @@ extension FiltersViewModel {
         selectedAlcoholicId = nil
         selectedCategoryId = nil
         selectedGlassId = nil
+    }
+}
+
+// MARK: - Identifiable
+
+extension FiltersViewModel {
+    var id: UUID {
+        UUID()
+    }
+}
+
+// MARK: - Hashable
+
+extension FiltersViewModel {
+    static func == (lhs: FiltersViewModel, rhs: FiltersViewModel) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

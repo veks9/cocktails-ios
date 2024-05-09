@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FiltersView<ViewModel: FiltersViewModeling>: View {
-    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var router: Router
     @StateObject var viewModel: ViewModel
     
     var body: some View {
@@ -17,10 +17,7 @@ struct FiltersView<ViewModel: FiltersViewModeling>: View {
         } else {
             filtersList
                 .background(Color.backgroundPrimary)
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbarBackground(.visible, for: .navigationBar)
-                .toolbarBackground(Color.appPrimary, for: .navigationBar)
-                .navigationBarBackButtonHidden(true)
+                .toolbar(.visible, for: .navigationBar)
                 .navigationBarItems(leading: leadingNavigationBarItem)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
@@ -36,11 +33,12 @@ struct FiltersView<ViewModel: FiltersViewModeling>: View {
     }
     
     var leadingNavigationBarItem: some View {
-        Assets.back.image?
-            .onTapGesture {
-                presentationMode.wrappedValue.dismiss()
-            }
-            .frame(width: 40, height: 40)
+        Button(action: {
+            router.navigateBack()
+        }, label: {
+            Assets.back.image
+        })
+        .frame(width: 40, height: 40)
     }
     
     var filtersList: some View {
@@ -95,9 +93,9 @@ struct FiltersView<ViewModel: FiltersViewModeling>: View {
     }
     
     var floatingButton: some View {
-        NavigationLink {
-            FilterResultsView(viewModel: viewModel.filterResultsViewModel)
-        } label: {
+        Button(action: {
+            router.navigate(to: .filterResults(viewModel: viewModel.filterResultsViewModel))
+        }, label: {
             Text(Localization.filtersFloatingButtonTitle.localized().uppercased())
                 .font(.headline)
                 .fontWeight(.medium)
@@ -108,8 +106,7 @@ struct FiltersView<ViewModel: FiltersViewModeling>: View {
                 )
                 .frame(height: 45)
                 .frame(maxWidth: .infinity)
-                .contentShape(Rectangle())
-        }
+        })
         .disabled(viewModel.isFloatingButtonDisabled)
         .background(
             viewModel.isFloatingButtonDisabled ?

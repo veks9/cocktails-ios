@@ -9,10 +9,37 @@ import SwiftUI
 
 @main
 struct CocktailsApp: App {
+    @ObservedObject var router = Router()
+    
     var body: some Scene {
         WindowGroup {
-            HomeView(viewModel: HomeViewModel())
-                .preferredColorScheme(.light)
+            NavigationStack(path: $router.navPath) {
+                HomeView(viewModel: HomeViewModel())
+                    .navigationDestination(for: Router.Destination.self) { destination in
+                        switch destination {
+                        case .cocktailDetails(let viewModel):
+                            CocktailDetailsView(viewModel: viewModel)
+                                .toolbarBackground(.visible, for: .navigationBar)
+                                .toolbarBackground(Color.appPrimary, for: .navigationBar)
+                                .navigationBarTitleDisplayMode(.inline)
+                                .navigationBarBackButtonHidden(true)
+                        case .filters(let viewModel):
+                            FiltersView(viewModel: viewModel)
+                                .toolbarBackground(.visible, for: .navigationBar)
+                                .toolbarBackground(Color.appPrimary, for: .navigationBar)
+                                .navigationBarTitleDisplayMode(.inline)
+                                .navigationBarBackButtonHidden(true)
+                        case .filterResults(let viewModel):
+                            FilterResultsView(viewModel: viewModel)
+                                .toolbarBackground(.visible, for: .navigationBar)
+                                .toolbarBackground(Color.appPrimary, for: .navigationBar)
+                                .navigationBarTitleDisplayMode(.inline)
+                                .navigationBarBackButtonHidden(true)
+                        }
+                    }
+            }
+            .preferredColorScheme(.light)
+            .environmentObject(router)
         }
     }
 }

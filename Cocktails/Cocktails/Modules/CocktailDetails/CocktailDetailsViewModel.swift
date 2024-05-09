@@ -8,7 +8,7 @@
 import Combine
 import SwiftUI
 
-protocol CocktailDetailsViewModeling: ObservableObject {
+protocol CocktailDetailsViewModeling: ObservableObject, Hashable, Identifiable {
     var categoryIconTitleViewModel: IconTitleViewModel? { get }
     var glassIconTitleViewModel: IconTitleViewModel? { get }
     var alcoholicTypeIconTitleViewModel: IconTitleViewModel? { get }
@@ -159,5 +159,25 @@ final class CocktailDetailsViewModel: CocktailDetailsViewModeling {
         attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 15), range: relativeDateRange)
         
         return AttributedString(attributedString)
+    }
+}
+
+// MARK: - Identifiable
+
+extension CocktailDetailsViewModel {
+    var id: UUID {
+        UUID()
+    }
+}
+
+// MARK: - Hashable
+
+extension CocktailDetailsViewModel {
+    static func == (lhs: CocktailDetailsViewModel, rhs: CocktailDetailsViewModel) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

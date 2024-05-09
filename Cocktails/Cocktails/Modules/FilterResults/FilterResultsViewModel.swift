@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol FilterResultsViewModeling: ObservableObject {
+protocol FilterResultsViewModeling: ObservableObject, Identifiable, Hashable {
     var cocktailViewModels: [CocktailViewModel] { get }
     var isLoading: Bool { get }
 }
@@ -54,5 +54,25 @@ final class FilterResultsViewModel: FilterResultsViewModeling {
             self?.isLoading = false
         })
         .assign(to: &$cocktailViewModels)
+    }
+}
+
+// MARK: - Identifiable
+
+extension FilterResultsViewModel {
+    var id: UUID {
+        UUID()
+    }
+}
+
+// MARK: - Hashable
+
+extension FilterResultsViewModel {
+    static func == (lhs: FilterResultsViewModel, rhs: FilterResultsViewModel) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
