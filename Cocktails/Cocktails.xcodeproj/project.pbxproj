@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71207EDF2BEE056F00731CF4 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71207EDE2BEE056F00731CF4 /* View+.swift */; };
 		715D93822BED7099003DAA54 /* CocktailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D93812BED7099003DAA54 /* CocktailsListView.swift */; };
 		715D93842BED8579003DAA54 /* FiltersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D93832BED8579003DAA54 /* FiltersTests.swift */; };
 		715D93862BED8700003DAA54 /* MockCocktailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D93852BED8700003DAA54 /* MockCocktailsService.swift */; };
@@ -96,6 +97,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		71207EDE2BEE056F00731CF4 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		715D93812BED7099003DAA54 /* CocktailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsListView.swift; sourceTree = "<group>"; };
 		715D93832BED8579003DAA54 /* FiltersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersTests.swift; sourceTree = "<group>"; };
 		715D93852BED8700003DAA54 /* MockCocktailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCocktailsService.swift; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				719BEEA42BE98D0C0075B264 /* Color+.swift */,
+				71207EDE2BEE056F00731CF4 /* View+.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				719BEEB52BEA0BBD0075B264 /* DateFormatter+.swift in Sources */,
 				719BEEE32BEB6E7E0075B264 /* CategoryFilter.swift in Sources */,
 				719BEE9F2BE987550075B264 /* Encodable+.swift in Sources */,
+				71207EDF2BEE056F00731CF4 /* View+.swift in Sources */,
 				719BEEC92BEAC7D30075B264 /* GetRandomCocktailDetailsRequest.swift in Sources */,
 				719BEE7D2BE97E700075B264 /* APIClient.swift in Sources */,
 				719BEE902BE982200075B264 /* Drink.swift in Sources */,

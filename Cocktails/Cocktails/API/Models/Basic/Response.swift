@@ -9,7 +9,7 @@ import Foundation
 
 extension Model {
     struct Response<T: Decodable>: Decodable {
-        let data: T
+        let data: T?
         
         enum CodingKeys: String, CodingKey {
             case data = "drinks"

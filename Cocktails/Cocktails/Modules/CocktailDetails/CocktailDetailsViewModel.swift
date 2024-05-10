@@ -51,7 +51,9 @@ final class CocktailDetailsViewModel: CocktailDetailsViewModeling {
         }
         
         return publisher
-            .ignoreFailure()
+            .catch({ _ in
+                return Just(nil).eraseToAnyPublisher()
+            })
             .compactMap({ $0 })
             .handleEvents(receiveOutput: { [weak self] _ in
                 self?.isLoading = false

@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import Combine
 
 protocol FilterResultsViewModeling: ObservableObject, Identifiable, Hashable {
     var cocktailViewModels: [CocktailViewModel] { get }
     var isLoading: Bool { get }
+    var showError: Bool { get set }
 }
 
 final class FilterResultsViewModel: FilterResultsViewModeling {
@@ -18,6 +20,7 @@ final class FilterResultsViewModel: FilterResultsViewModeling {
     
     private let context: FilterResultsContext
     private let cocktailService: CocktailServicing
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
     
@@ -35,6 +38,7 @@ final class FilterResultsViewModel: FilterResultsViewModeling {
     
     @Published private(set) var cocktailViewModels: [CocktailViewModel] = []
     @Published private(set) var isLoading = true
+    @Published var showError = false
     
     // MARK: - Private functions
     
@@ -44,16 +48,27 @@ final class FilterResultsViewModel: FilterResultsViewModeling {
             categoryFilter: context.selectedCategoryId,
             glassFilter: context.selectedGlassId
         )
-        .ignoreFailure()
         .map { drinksResponse in
-            drinksResponse.data.map {
+            let models = drinksResponse.data ?? []
+            return models.map {
                 CocktailViewModel(from: $0)
             }
         }
-        .handleEvents(receiveOutput: { [weak self] _ in
-            self?.isLoading = false
+        .sink(receiveCompletion: { [weak self] completion in
+            guard let self else { return }
+            switch completion {
+            case .finished:
+                break
+            case .failure:
+                isLoading = false
+                showError = true
+            }
+        }, receiveValue: { [weak self] cocktailViewModels in
+            guard let self else { return }
+            isLoading = false
+            self.cocktailViewModels = cocktailViewModels
         })
-        .assign(to: &$cocktailViewModels)
+        .store(in: &cancellables)
     }
 }
 

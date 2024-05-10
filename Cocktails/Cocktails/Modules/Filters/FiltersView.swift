@@ -29,6 +29,7 @@ struct FiltersView<ViewModel: FiltersViewModeling>: View {
                         trailingToolbarItem
                     }
                 }
+                .errorAlert(showError: $viewModel.showError, title: Text(Localization.errorTitle.localized()))
         }
     }
     

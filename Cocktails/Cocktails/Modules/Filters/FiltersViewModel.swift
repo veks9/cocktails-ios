@@ -14,6 +14,7 @@ protocol FiltersViewModeling: ObservableObject, Hashable, Identifiable {
     var isFloatingButtonDisabled: Bool { get }
     var isLoading: Bool { get }
     var filterResultsViewModel: FilterResultsViewModel { get }
+    var showError: Bool { get set }
     
     func onAlcoholicFilterViewTap(with id: String)
     func onCategoryFilterViewTap(with id: String)
@@ -30,6 +31,7 @@ final class FiltersViewModel: FiltersViewModeling {
     @Published private var selectedAlcoholicId: String?
     @Published private var selectedCategoryId: String?
     @Published private var selectedGlassId: String?
+    private var cancellables = Set<AnyCancellable>()
 
     // MARK: - Init
 
@@ -45,6 +47,7 @@ final class FiltersViewModel: FiltersViewModeling {
     @Published private(set) var isResetButtonDisabled = true
     @Published private(set) var isFloatingButtonDisabled = true
     @Published private(set) var isLoading = true
+    @Published var showError = false
     
     var filterResultsViewModel: FilterResultsViewModel {
         FilterResultsViewModel(
@@ -86,22 +89,33 @@ final class FiltersViewModel: FiltersViewModeling {
             cocktailService.getGlassFilters().ignoreFailure().map { $0.data },
             selectedIds
         )
-        .ignoreFailure()
-        .map { [weak self] alcoholicFilters, categoryFilters, glassFilters, selectedIds in
+        .setFailureType(to: Model.APIError.self)
+        .map { [weak self] alcoholicFilters, categoryFilters, glassFilters, selectedIds -> [FiltersSection] in
             guard let self else { return [] }
             let selectedAlcoholicId = selectedIds.0
             let selectedCategoryId = selectedIds.1
             let selectedGlassId = selectedIds.2
-            let alcoholicSection = createAlcoholicSection(from: alcoholicFilters, selectedId: selectedAlcoholicId)
-            let categoriesSection = createCategoriesSection(from: categoryFilters, selectedId: selectedCategoryId)
-            let glassesSection = createGlassesSection(from: glassFilters, selectedId: selectedGlassId)
+            let alcoholicSection = createAlcoholicSection(from: alcoholicFilters ?? [], selectedId: selectedAlcoholicId)
+            let categoriesSection = createCategoriesSection(from: categoryFilters ?? [], selectedId: selectedCategoryId)
+            let glassesSection = createGlassesSection(from: glassFilters ?? [], selectedId: selectedGlassId)
             
             return [alcoholicSection, categoriesSection, glassesSection]
         }
-        .handleEvents(receiveOutput: { [weak self] _ in
-            self?.isLoading = false
+        .sink(receiveCompletion: { [weak self] completion in
+            guard let self else { return }
+            switch completion {
+            case .finished:
+                break
+            case .failure:
+                isLoading = false
+                showError = true
+            }
+        }, receiveValue: { [weak self] dataSource in
+            guard let self else { return }
+            isLoading = false
+            self.dataSource = dataSource
         })
-        .assign(to: &$dataSource)
+        .store(in: &cancellables)
     }
     
     private func createAlcoholicSection(from models: [Model.AlcoholicFilter], selectedId: String?) -> FiltersSection {

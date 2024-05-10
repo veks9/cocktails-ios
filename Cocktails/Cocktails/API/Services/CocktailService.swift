@@ -29,13 +29,13 @@ final class CocktailService: CocktailServicing {
     
     func getCocktail(with id: String) -> AnyPublisher<Model.Drink?, Model.APIError> {
         APIClient.shared.performRequest(GetCocktailDetailsRequest(id: id))
-            .map { $0.data.first }
+            .map { $0.data?.first }
             .eraseToAnyPublisher()
     }
     
     func getRandomCocktail() -> AnyPublisher<Model.Drink?, Model.APIError> {
         APIClient.shared.performRequest(GetRandomCocktailDetailsRequest())
-            .map { $0.data.first }
+            .map { $0.data?.first }
             .eraseToAnyPublisher()
     }
     

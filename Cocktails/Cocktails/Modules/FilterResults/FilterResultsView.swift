@@ -25,6 +25,7 @@ struct FilterResultsView<ViewModel: FilterResultsViewModeling>: View {
                             .fontWeight(.semibold)
                     }
                 }
+                .errorAlert(showError: $viewModel.showError, title: Text(Localization.errorTitle.localized()))
         }
     }
     

@@ -33,6 +33,7 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
                 .ignoresSafeArea(.all)
                 .background(Color.backgroundPrimary)
                 .toolbar(.hidden, for: .navigationBar)
+                .errorAlert(showError: $viewModel.showError, title: Text(Localization.errorTitle.localized()))
             }
         }
     }

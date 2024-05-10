@@ -20,6 +20,7 @@ enum Localization: String {
     case searchBarPlaceholder = "search_bar_placeholder"
     case searchBarFocusedPlaceholder = "search_bar_focused_placeholder"
     case loadingViewTitle = "loading_view_title"
+    case errorTitle = "error_title"
     
     // MARK: - Home
     
