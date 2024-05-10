@@ -24,6 +24,7 @@ final class HomeViewModel: HomeViewModeling {
     
     private let cocktailService: CocktailServicing
     private let isSearchFocusedSubject = CurrentValueSubject<Bool, Never>(false)
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
     
@@ -38,9 +39,9 @@ final class HomeViewModel: HomeViewModeling {
     // MARK: - Internal properties
     
     @Published private(set) var cocktailViewModels: [CocktailViewModel] = []
-    @Published var searchText: String = ""
-    @Published private(set) var isLoading: Bool = true
-    @Published private(set) var isFilterButtonShown: Bool = true
+    @Published var searchText = ""
+    @Published private(set) var isLoading = true
+    @Published private(set) var isFilterButtonShown = true
     
     // MARK: - Private functions
     

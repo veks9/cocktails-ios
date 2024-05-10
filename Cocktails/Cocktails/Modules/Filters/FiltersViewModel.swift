@@ -42,9 +42,9 @@ final class FiltersViewModel: FiltersViewModeling {
     // MARK: - Internal properties
     
     @Published private(set) var dataSource: [FiltersSection] = []
-    @Published private(set) var isResetButtonDisabled: Bool = true
-    @Published private(set) var isFloatingButtonDisabled: Bool = true
-    @Published private(set) var isLoading: Bool = true
+    @Published private(set) var isResetButtonDisabled = true
+    @Published private(set) var isFloatingButtonDisabled = true
+    @Published private(set) var isLoading = true
     
     var filterResultsViewModel: FilterResultsViewModel {
         FilterResultsViewModel(

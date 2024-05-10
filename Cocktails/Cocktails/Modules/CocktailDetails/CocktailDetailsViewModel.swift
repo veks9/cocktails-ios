@@ -65,12 +65,12 @@ final class CocktailDetailsViewModel: CocktailDetailsViewModeling {
     @Published private(set) var categoryIconTitleViewModel: IconTitleViewModel?
     @Published private(set) var glassIconTitleViewModel: IconTitleViewModel?
     @Published private(set) var alcoholicTypeIconTitleViewModel: IconTitleViewModel?
-    @Published private(set) var navigationTitle: String = ""
+    @Published private(set) var navigationTitle = ""
     @Published private(set) var thumbnailUrl: URL?
     @Published private(set) var directions: String?
     @Published private(set) var lastModifiedFormatted: AttributedString?
     @Published private(set) var ingredientsAndMeasures: String?
-    @Published private(set) var isLoading: Bool = true
+    @Published private(set) var isLoading = true
     
     // MARK: - Private functions
     

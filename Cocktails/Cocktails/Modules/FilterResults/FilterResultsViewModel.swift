@@ -34,7 +34,7 @@ final class FilterResultsViewModel: FilterResultsViewModeling {
     // MARK: - Internal properties
     
     @Published private(set) var cocktailViewModels: [CocktailViewModel] = []
-    @Published private(set) var isLoading: Bool = true
+    @Published private(set) var isLoading = true
     
     // MARK: - Private functions
     
