@@ -17,6 +17,7 @@ protocol HomeViewModeling: ObservableObject {
     var showError: Bool { get set }
     
     func onSearchBarFocusChange(_ focus: Bool)
+    func onTryAgainButtonTap()
 }
 
 final class HomeViewModel: HomeViewModeling {
@@ -34,6 +35,7 @@ final class HomeViewModel: HomeViewModeling {
     ) {
         self.cocktailService = cocktailService
         
+        fetch()
         observe()
     }
     
@@ -47,7 +49,8 @@ final class HomeViewModel: HomeViewModeling {
     
     // MARK: - Private functions
     
-    private func observe() {
+    private func fetch() {
+        isLoading = true
         Publishers.CombineLatest(
             $searchText.debounce(for: 0.2, scheduler: RunLoop.main),
             isSearchFocusedSubject
@@ -83,7 +86,9 @@ final class HomeViewModel: HomeViewModeling {
             self.cocktailViewModels = cocktailViewModels
         })
         .store(in: &cancellables)
-        
+    }
+    
+    private func observe() {
         Publishers.CombineLatest(
             $searchText,
             isSearchFocusedSubject
@@ -100,5 +105,9 @@ final class HomeViewModel: HomeViewModeling {
 extension HomeViewModel {
     func onSearchBarFocusChange(_ focus: Bool) {
         isSearchFocusedSubject.send(focus)
+    }
+    
+    func onTryAgainButtonTap() {
+        fetch()
     }
 }

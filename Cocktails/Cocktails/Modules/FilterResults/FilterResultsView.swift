@@ -25,7 +25,16 @@ struct FilterResultsView<ViewModel: FilterResultsViewModeling>: View {
                             .fontWeight(.semibold)
                     }
                 }
-                .errorAlert(showError: $viewModel.showError, title: Text(Localization.errorTitle.localized()))
+                .alert(isPresented: $viewModel.showError, content: {
+                    Alert(
+                        title: Text(Localization.errorTitle.localized()),
+                        message: nil,
+                        primaryButton: .cancel(Text("OK")),
+                        secondaryButton: .default(Text(Localization.errorTryAgainButtonTitle.localized())) {
+                            viewModel.onTryAgainButtonTap()
+                        }
+                    )
+                })
         }
     }
     

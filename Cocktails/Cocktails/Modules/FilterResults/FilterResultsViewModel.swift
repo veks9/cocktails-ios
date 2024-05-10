@@ -12,6 +12,8 @@ protocol FilterResultsViewModeling: ObservableObject, Identifiable, Hashable {
     var cocktailViewModels: [CocktailViewModel] { get }
     var isLoading: Bool { get }
     var showError: Bool { get set }
+    
+    func onTryAgainButtonTap()
 }
 
 final class FilterResultsViewModel: FilterResultsViewModeling {
@@ -31,7 +33,7 @@ final class FilterResultsViewModel: FilterResultsViewModeling {
         self.context = context
         self.cocktailService = cocktailService
         
-        observe()
+        fetch()
     }
     
     // MARK: - Internal properties
@@ -42,7 +44,8 @@ final class FilterResultsViewModel: FilterResultsViewModeling {
     
     // MARK: - Private functions
     
-    private func observe() {
+    private func fetch() {
+        isLoading = true
         cocktailService.filterCocktails(
             alcoholicFilter: context.selectedAlcoholicId,
             categoryFilter: context.selectedCategoryId,
@@ -69,6 +72,14 @@ final class FilterResultsViewModel: FilterResultsViewModeling {
             self.cocktailViewModels = cocktailViewModels
         })
         .store(in: &cancellables)
+    }
+}
+
+// MARK: - Internal functions
+
+extension FilterResultsViewModel {
+    func onTryAgainButtonTap() {
+        fetch()
     }
 }
 

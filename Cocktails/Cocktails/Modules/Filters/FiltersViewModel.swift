@@ -20,6 +20,7 @@ protocol FiltersViewModeling: ObservableObject, Hashable, Identifiable {
     func onCategoryFilterViewTap(with id: String)
     func onGlassFilterViewTap(with id: String)
     func onResetButtonTap()
+    func onTryAgainButtonTap()
 }
 
 final class FiltersViewModel: FiltersViewModeling {
@@ -38,6 +39,7 @@ final class FiltersViewModel: FiltersViewModeling {
     init(cocktailService: CocktailServicing = CocktailService()) {
         self.cocktailService = cocktailService
         
+        fetch()
         observe()
     }
     
@@ -70,19 +72,8 @@ final class FiltersViewModel: FiltersViewModeling {
     
     // MARK: - Private functions
     
-    private func observe() {
-        selectedIds
-        .map {
-            $0.isEmptyOrNil && $1.isEmptyOrNil && $2.isEmptyOrNil
-        }
-        .assign(to: &$isResetButtonDisabled)
-        
-        selectedIds
-        .map {
-            $0.isEmptyOrNil && $1.isEmptyOrNil && $2.isEmptyOrNil
-        }
-        .assign(to: &$isFloatingButtonDisabled)
-        
+    private func fetch() {
+        isLoading = true
         Publishers.CombineLatest4(
             cocktailService.getAlcoholicFilters().ignoreFailure().map { $0.data },
             cocktailService.getCategoryFilters().ignoreFailure().map { $0.data },
@@ -116,6 +107,20 @@ final class FiltersViewModel: FiltersViewModeling {
             self.dataSource = dataSource
         })
         .store(in: &cancellables)
+    }
+    
+    private func observe() {
+        selectedIds
+        .map {
+            $0.isEmptyOrNil && $1.isEmptyOrNil && $2.isEmptyOrNil
+        }
+        .assign(to: &$isResetButtonDisabled)
+        
+        selectedIds
+        .map {
+            $0.isEmptyOrNil && $1.isEmptyOrNil && $2.isEmptyOrNil
+        }
+        .assign(to: &$isFloatingButtonDisabled)
     }
     
     private func createAlcoholicSection(from models: [Model.AlcoholicFilter], selectedId: String?) -> FiltersSection {
@@ -198,6 +203,10 @@ extension FiltersViewModel {
         selectedAlcoholicId = nil
         selectedCategoryId = nil
         selectedGlassId = nil
+    }
+    
+    func onTryAgainButtonTap() {
+        fetch()
     }
 }
 

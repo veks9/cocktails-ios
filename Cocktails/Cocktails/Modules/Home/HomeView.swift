@@ -33,7 +33,16 @@ struct HomeView<ViewModel: HomeViewModeling>: View {
                 .ignoresSafeArea(.all)
                 .background(Color.backgroundPrimary)
                 .toolbar(.hidden, for: .navigationBar)
-                .errorAlert(showError: $viewModel.showError, title: Text(Localization.errorTitle.localized()))
+                .alert(isPresented: $viewModel.showError, content: {
+                    Alert(
+                        title: Text(Localization.errorTitle.localized()),
+                        message: nil,
+                        primaryButton: .cancel(Text("OK")),
+                        secondaryButton: .default(Text(Localization.errorTryAgainButtonTitle.localized())) {
+                            viewModel.onTryAgainButtonTap()
+                        }
+                    )
+                })
             }
         }
     }

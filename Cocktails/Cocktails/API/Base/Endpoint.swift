@@ -27,7 +27,7 @@ enum Endpoint {
         case .random:
             return "/random.php"
         case .list:
-            return "/list.php"
+            return "/lista.php"
         case .filter:
             return "/filter.php"
         }
