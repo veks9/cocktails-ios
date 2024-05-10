@@ -46,7 +46,7 @@ extension APIClient {
                     switch response.result {
                     case .success(let value):
                         promise(.success(value))
-                    case .failure(let afError):
+                    case .failure:
                         do {
                             _ = try self.decoder.decode(T.ResponseType.self, from: response.data ?? Data())
                         } catch {
