@@ -27,9 +27,9 @@ final class FiltersViewModel: FiltersViewModeling {
     
     private let cocktailService: CocktailServicing
     
-    @Published private(set) var selectedAlcoholicId: String?
-    @Published private(set) var selectedCategoryId: String?
-    @Published private(set) var selectedGlassId: String?
+    @Published private var selectedAlcoholicId: String?
+    @Published private var selectedCategoryId: String?
+    @Published private var selectedGlassId: String?
 
     // MARK: - Init
 

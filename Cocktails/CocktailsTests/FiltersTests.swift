@@ -19,7 +19,7 @@ final class FiltersTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func test_givenAlcoholicCategoryAndGlassIds_whenAlcoholicCategoryAndGlassIdsAreAssigned_thenAllIdsShouldBeEqual() throws {
+    func test_givenAlcoholicCategoryAndGlassIds_whenAlcoholicCategoryAndGlassIdsAreAssigned_thenResetButtonAndFloatingButtonShouldBeEnabled() throws {
         // Given
         let mockCocktailsService = MockCocktailService()
         let givenAlcoholicId = "Alcoholic"
@@ -27,7 +27,7 @@ final class FiltersTests: XCTestCase {
         let givenGlassId = "Wine Glass"
         
         // SUT
-        let viewModel = FiltersViewModel()
+        let viewModel = FiltersViewModel(cocktailService: mockCocktailsService)
        
         // When
         viewModel.onAlcoholicFilterViewTap(with: givenAlcoholicId)
@@ -35,12 +35,11 @@ final class FiltersTests: XCTestCase {
         viewModel.onGlassFilterViewTap(with: givenGlassId)
         
         // Then
-        XCTAssertEqual(viewModel.selectedAlcoholicId, givenAlcoholicId)
-        XCTAssertEqual(viewModel.selectedCategoryId, givenCategoryId)
-        XCTAssertEqual(viewModel.selectedGlassId, givenGlassId)
+        XCTAssertFalse(viewModel.isResetButtonDisabled)
+        XCTAssertFalse(viewModel.isFloatingButtonDisabled)
     }
     
-    func test_givenAlcoholicCategoryAndGlassIds_whenResetButtonIsTapped_thenAllIdsShouldBeNil() throws {
+    func test_givenAlcoholicCategoryAndGlassIds_whenResetButtonIsTapped_thenResetButtonAndFloatingButtonShouldBeDisabled() throws {
         // Given
         let mockCocktailsService = MockCocktailService()
         let givenAlcoholicId = "Alcoholic"
@@ -48,7 +47,7 @@ final class FiltersTests: XCTestCase {
         let givenGlassId = "Wine Glass"
         
         // SUT
-        let viewModel = FiltersViewModel()
+        let viewModel = FiltersViewModel(cocktailService: mockCocktailsService)
        
         // When
         viewModel.onAlcoholicFilterViewTap(with: givenAlcoholicId)
@@ -57,9 +56,8 @@ final class FiltersTests: XCTestCase {
         viewModel.onResetButtonTap()
         
         // Then
-        XCTAssertNil(viewModel.selectedAlcoholicId)
-        XCTAssertNil(viewModel.selectedCategoryId)
-        XCTAssertNil(viewModel.selectedGlassId)
+        XCTAssertTrue(viewModel.isResetButtonDisabled)
+        XCTAssertTrue(viewModel.isFloatingButtonDisabled)
     }
     
     func test_givenFiltersScreenIsShown_whenFilterItemsAreFetched_thenIsLoadingShouldBeFalse() throws {
