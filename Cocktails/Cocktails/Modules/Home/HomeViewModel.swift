@@ -24,7 +24,6 @@ final class HomeViewModel: HomeViewModeling {
     
     private let cocktailService: CocktailServicing
     private let isSearchFocusedSubject = CurrentValueSubject<Bool, Never>(false)
-    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
     
