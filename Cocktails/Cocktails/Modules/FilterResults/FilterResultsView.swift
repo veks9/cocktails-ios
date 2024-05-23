@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FilterResultsView<ViewModel: FilterResultsViewModeling>: View {
     @EnvironmentObject var router: Router
-    @StateObject var viewModel: ViewModel
+    @ObservedObject var viewModel: ViewModel
     
     var body: some View {
         if viewModel.isLoading {

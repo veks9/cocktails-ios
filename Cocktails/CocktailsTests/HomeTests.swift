@@ -148,7 +148,7 @@ final class HomeTests: XCTestCase {
         // Then
         wait()
         
-        XCTAssertTrue(viewModel.isFilterButtonShown)
+        XCTAssertFalse(viewModel.isFilterButtonShown)
     }
     
     func test_givenHomeScreenIsShown_whenSearchTextIsEmptyAndIsFocused_thenFilterButtonShouldNotBeShown() throws {

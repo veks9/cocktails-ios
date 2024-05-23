@@ -24,11 +24,11 @@ final class MockCocktailService: CocktailServicing {
     }
     
     func getCocktail(with id: String) -> AnyPublisher<Cocktails.Model.Drink?, Cocktails.Model.APIError> {
-        Just(mockSearchCocktailsResponse?.data.first).setFailureType(to: Cocktails.Model.APIError.self).eraseToAnyPublisher()
+        Just(mockSearchCocktailsResponse?.data?.first).setFailureType(to: Cocktails.Model.APIError.self).eraseToAnyPublisher()
     }
     
     func getRandomCocktail() -> AnyPublisher<Cocktails.Model.Drink?, Cocktails.Model.APIError> {
-        Just(mockSearchCocktailsResponse?.data.first).setFailureType(to: Cocktails.Model.APIError.self).eraseToAnyPublisher()
+        Just(mockSearchCocktailsResponse?.data?.first).setFailureType(to: Cocktails.Model.APIError.self).eraseToAnyPublisher()
     }
     
     func getAlcoholicFilters() -> Future<Cocktails.Model.Response<[Cocktails.Model.AlcoholicFilter]>, Cocktails.Model.APIError> {
